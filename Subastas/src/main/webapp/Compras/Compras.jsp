@@ -1,7 +1,7 @@
 <%-- 
     Document   : Compras
     Created on : 25/09/2018, 07:40:03 PM
-    Author     : fgb
+    Author     : fgb hola
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
