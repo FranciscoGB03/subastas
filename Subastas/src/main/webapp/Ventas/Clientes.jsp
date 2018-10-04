@@ -1,49 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8"/>
-  <title>Document</title>
-     <link rel="stylesheet" type="text/css" href="css/estilos.css"> 
-    
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subastas</title>
+<!--Enlace a estilos personalizados de COntabilidad-->
+<link href="../Recursos/css/contabilidad.css" rel="stylesheet" type="text/css"/>
+<!--Validacion de campos-->
+<script src="../Recursos/js/Contabilidad.js" type="text/javascript"></script>
+<!-- Bootstrap -->
+<link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
 </head>
-<center>
-    <footer>
-<p>
-Clientes
-</p>
-</footer>
-    </center>
-    
-
-<body>
+<body>    
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <a href="Contabilidad.jsp" class="navbar-brand text-white">Ventas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conta_navbar" aria-controls="conta_navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="conta_navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="Clientes.html" class="nav-link text-white">Clientes</a>
+                    </li>                            
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
+                        <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
+                            <a class="nav-link text-white" href="Pedido.html">&nbsp;Pedido</a>
+                            <a class="nav-link text-white" href="Orden de Venta.html">&nbsp;Orden de Venta</a>
+                                                             
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Salida Ventas</a>
+                        <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
+                            <a class="nav-link text-white" href="Factura.html">&nbsp;Factura</a>
+                        </div>
+                    </li> 
+                    <li class="nav-item">
+                        <a href="CalendarioContable.jsp" class="nav-link text-white">Estadisticas</a>
+                    </li>  
+                                       
+                </ul>   
+               <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
+                    <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
+                </form>
+            </div>
+        </nav>
+    </header>
     <center>
 <form>
+    <br>
+    <br>
+    <br>
+    <br>
     <label for="Codigo">Codigo:</label>
-    <input type="text" placeholder="Escribe tu codigo" maxlength="15" name="nombre" id="nombre"></form>
-   <div>
-    <form>
-    <label for="Codigo">Razon Social:</label>
-        <input type="text" placeholder="Escribe tu razon" maxlength="15" name="nombre" id="nombre"></form></div>
+    
+    <input type="text" placeholder="Escribe tu codigo" maxlength="30"ame="nombre" id="nombre">
    
+    <label for="Codigo">Razon Social:</label>
+    <input type="text" placeholder="Escribe tu razon" maxlength="30"ame="nombre" id="nombre"></form>
+   <br>
     <form>
     <label for="Codigo">Direccion:</label>
-    <input type="text" placeholder="Escribe tu direccion" maxlength="15" name="nombre" id="nombre"></form>
+    <input type="text" placeholder="Escribe tu direccion" maxlength="30"ame="nombre" id="nombre">
    
-    <form>
     <label for="Codigo">Ubicacion:</label>
-    <input type="text" placeholder="Escribe tu ubicacion" maxlength="15" name="nombre" id="nombre"></form>
+    <input type="text" placeholder="Escribe tu ubicacion" maxlength="30"ame="nombre" id="nombre"></form>
+    <br>
     <form>
     <label for="Codigo">Telefono:</label>
-    <input type="text" placeholder="Escribe tu telefono" maxlength="15" name="nombre" id="nombre"></form>
-    <form>
+    <input type="text" placeholder="Escribe tu telefono" maxlength="30"ame="nombre" id="nombre">
+    
     <label for="Codigo">Fax:</label>
-        <input type="text" placeholder="Escribe tu fax" maxlength="15" name="nombre" id="nombre"></form>
+        <input type="text" placeholder="Escribe tu fax" maxlength="30"ame="nombre" id="nombre"></form>
+    <br>
     <form>
     <label for="Codigo">E-mail:</label>
-    <input type="text" placeholder="Escribe tu e-mail" maxlength="15" name="nombre" id="nombre"></form>
+    <input type="text" placeholder="Escribe tu e-mail" maxlength="30"ame="nombre" id="nombre"></form>
     
-    </form>
+    <br>
     
     <left>
     <input type="submit" value="Guardar">
@@ -51,5 +93,4 @@ Clientes
     </left>
     </center>
     </body>
-
 </html>
