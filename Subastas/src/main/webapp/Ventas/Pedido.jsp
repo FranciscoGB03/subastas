@@ -62,27 +62,30 @@
     <br>
     <label for="Codigo">Cliente:</label>
     
-    <input type="text" placeholder="Escribe aqui" maxlength="30"ame="nombre" id="nombre"></form>
+    <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre">
+</form>
    <br>
     <form>
         <label for="Codigo">Numero:</label>
-        <input type="text" placeholder="Escribe aqui" maxlength="30"ame="nombre" id="nombre"></form>
+        <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre">
+    </form>
    <br>
     <form>
         <label for="Codigo">Fecha:</label>
-    <input type="text" placeholder="Escribe aqui" maxlength="30"ame="nombre" id="nombre"></form>
+        <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre">
+    </form>
    <br>
     <form>
         <label for="Codigo">Codigo:</label>
-    <input type="text" placeholder="Escribe aqui" maxlength="30"ame="nombre" id="nombre"></form>
+    <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre"></form>
     <br>
     <form>
         <label for="Codigo">Vendedor:</label>
-    <input type="text" placeholder="Escribe aqui" maxlength="30"ame="nombre" id="nombre"></form>
+    <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre"></form>
     <br>
     <form>
         <label for="Codigo">Moneda:</label>
-        <input type="text" placeholder="Escribe aqui" maxlength="30"ame="nombre" id="nombre"></form>
+        <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre"></form>
     
     
     <br>
