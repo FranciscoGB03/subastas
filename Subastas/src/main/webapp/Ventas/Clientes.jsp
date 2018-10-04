@@ -27,24 +27,24 @@
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="Clientes.html" class="nav-link text-white">Clientes</a>
+                        <a href="Clientes.jsp" class="nav-link text-white">Clientes</a>
                     </li>                            
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-                            <a class="nav-link text-white" href="Pedido.html">&nbsp;Pedido</a>
-                            <a class="nav-link text-white" href="Orden de Venta.html">&nbsp;Orden de Venta</a>
+                            <a class="nav-link text-white" href="Pedido.jsp">&nbsp;Pedido</a>
+                            <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
                                                              
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Salida Ventas</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-                            <a class="nav-link text-white" href="Factura.html">&nbsp;Factura</a>
+                            <a class="nav-link text-white" href="Factura.jsp">&nbsp;Factura</a>
                         </div>
                     </li> 
                     <li class="nav-item">
-                        <a href="CalendarioContable.jsp" class="nav-link text-white">Estadisticas</a>
+                        <a href="Estadisticas.jsp" class="nav-link text-white">Estadisticas</a>
                     </li>  
                                        
                 </ul>   
