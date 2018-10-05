@@ -1,3 +1,6 @@
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.CuentaSat"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,17 +98,23 @@
             </div>            
         </div>
         <!--Columna Central-->
-        <div class="col-xs-6 col-md-6 central table-responsive">   
-                    <h1 class="titulo">Cuentas SAT</h1>
+        <div class="col-xs-6 col-md-6 central table-responsive scroll-y">   
+                    <h1 class="titulo">Cuentas SAT</h1>                                        
                     <table class="tablas table">
                         <tr>
                             <th>Cuenta</th>                            
                             <th>Descripci&oacute;n</th>                            
                         </tr>
-                        <tr>
-                            <td>100</td>
-                            <td>Activo</td>                            
-                        </tr>                        
+                        <%
+                        LinkedList<CuentaSat> lista =ConsultasGenerales.cuentaSat();
+                        for (int i=0;i<lista.size();i++)
+                        {
+                           out.println("<tr>");                               
+                           out.println("<td>"+lista.get(i).getCuenta()+"</td>");
+                           out.println("<td>"+lista.get(i).getDescripcion()+"</td>");                           
+                           out.println("</tr>");
+                        }
+                    %>
                     </table>               
         </div>
         <!--columna de la derecha-->
