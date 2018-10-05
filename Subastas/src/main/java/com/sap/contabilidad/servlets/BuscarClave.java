@@ -5,8 +5,13 @@
  */
 package com.sap.contabilidad.servlets;
 
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,19 +35,31 @@ public class BuscarClave extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+        String cadena=request.getParameter("clavep");        
+        Conexion c=new Conexion();
+        String campos="clave,periodo,fechaini,fechafin,estatus";
+        ArrayList l=c.consultaVariosCamposUnaClave(cadena, campos,"calen_contable", 5);
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet BuscarClave</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet BuscarClave at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            /* TODO output your page here. You may use following sample code. */                  
+            out.println("<h1 class='text-center'> Consulta Realizada</h1>");         
+            out.println("<table class='tablas table'>");         
+            out.println("<tr>");
+            out.println("<th>Clave</th>");
+            out.println("<th>Periodo</th>");
+            out.println("<th>Fecha inicio</th>");
+            out.println("<th>Fecha final</th>");
+            out.println("<th>Estatus</th>");
+            out.println("</tr>");
+            out.println("<tr>");                               
+            out.println("<td>"+l.get(0)+"</td>");
+            out.println("<td>"+l.get(1)+"</td>");
+            out.println("<td>"+l.get(2)+"</td>");
+            out.println("<td>"+l.get(3)+"</td>");
+            out.println("<td>"+l.get(4)+"</td>");
+            out.println("</tr>");            
+            out.println("</table>");         
         }
     }
 
@@ -58,7 +75,13 @@ public class BuscarClave extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BuscarClave.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarClave.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -72,7 +95,19 @@ public class BuscarClave extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+//        String cadena=request.getParameter("clavep");
+//        System.out.println("estoy en post");
+//        try (PrintWriter out = response.getWriter()) {
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<h1>Servlet AgregarAsientoDetalle at " + cadena + "</h1>");         
+//        }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BuscarClave.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarClave.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

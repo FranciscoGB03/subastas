@@ -16,6 +16,19 @@
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function() {
+            $('#submit').click(function(event) {
+                    var clavebuscar = $('#clave').val();        
+                    // Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
+                    $.post('../BuscarClave', {
+                            clavep : clavebuscar
+                    }, function(responseText) {                            
+                            $('#tabla').html(responseText);
+                    });
+            });
+    });
+</script>
 </head>
 <body>    
     <header class="sticky-top">
@@ -73,7 +86,7 @@
                	</div>
               	<div class="row">                        
                     <div class="col-xs-2">
-                      <input type="submit" value="buscar"/>       
+                      <input id="submit" type="button" value="buscar"/>       
                     </div>
               	</div>
                     
@@ -101,7 +114,7 @@
             </div>
         </div>
         <!--Columna Central-->
-        <div class="col-xs-6 col-md-6 central">
+        <div class="col-xs-6 col-md-6 central" id="tabla">
             <div class="jumbotron">
                 <div class="container">
                     <h4 class="titulo">Agregar Periodo Contable</h4>

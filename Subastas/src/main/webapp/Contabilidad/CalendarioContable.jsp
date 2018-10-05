@@ -1,21 +1,37 @@
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.Calen_Contable"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Subastas</title>
-<!--Enlace a estilos personalizados de COntabilidad-->
-<link href="../Recursos/css/contabilidad.css" rel="stylesheet" type="text/css"/>
-<!--Validacion de campos-->
-<script src="../Recursos/js/Contabilidad.js" type="text/javascript"></script>
-<!-- Bootstrap -->
-<link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Subastas</title>
+    <!--Enlace a estilos personalizados de COntabilidad-->
+    <link href="../Recursos/css/contabilidad.css" rel="stylesheet" type="text/css"/>
+    <!--Validacion de campos-->
+    <script src="../Recursos/js/Contabilidad.js" type="text/javascript"></script>
+    <!-- Bootstrap -->
+    <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+    <script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+                $('#submit').click(function(event) {
+                        var clavebuscar = $('#clave').val();        
+                        // Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
+                        $.post('../BuscarClave', {
+                                clavep : clavebuscar
+                        }, function(responseText) {                            
+                                $('#tabla').html(responseText);
+                        });
+                });
+        });
+    </script>
 </head>
 <body>    
     <header class="sticky-top">
@@ -73,7 +89,7 @@
                             </div>
                             <div class="row">                        
                                 <div class="col-xs-2">
-                                  <input type="submit" value="buscar"/>       
+                                  <input id="submit" type="button" value="buscar"/>       
                                 </div>
                             </div>                    
                         </form>
@@ -100,17 +116,30 @@
                 </div>            
             </div>
             <!--Columna Central-->
-            <div class="col-xs-6 col-md-6 central table-responsive">                    
-                        <table class="tablas table">
-                            <tr>                                
-                                <th>Clave</th>
-                                <th>Periodo</th>
-                                <th>Fecha inicio</th>
-                                <th>Fecha final</th>
-                                <th>Estatus</th>
-                            </tr>
-                           
-                        </table>               
+            <div class="col-xs-6 col-md-6 central table-responsive" id="tabla" >                    
+                <h1 class="text-center">Periodos Contables</h1>
+                <table class="tablas table">
+                    <tr>                                
+                        <th>Clave</th>
+                        <th>Periodo</th>
+                        <th>Fecha inicio</th>
+                        <th>Fecha final</th>
+                        <th>Estatus</th>
+                    </tr>
+                   <%
+                        LinkedList<Calen_Contable> lista =ConsultasGenerales.consultaGeneral();
+                        for (int i=0;i<lista.size();i++)
+                        {
+                           out.println("<tr>");                               
+                           out.println("<td>"+lista.get(i).getClave()+"</td>");
+                           out.println("<td>"+lista.get(i).getPeriodo()+"</td>");
+                           out.println("<td>"+lista.get(i).getFechaini()+"</td>");
+                           out.println("<td>"+lista.get(i).getFechafin()+"</td>");
+                           out.println("<td>"+lista.get(i).getEstatus()+"</td>");
+                           out.println("</tr>");
+                        }
+                    %>
+                </table>               
             </div>
             <!--columna de la derecha-->
             <div class="col-xs-3 col-md-3 derecha table-responsive">
