@@ -1,3 +1,7 @@
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.CuentaSat"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,42 +23,43 @@
 </head>
 <body>    
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a href="Contabilidad.jsp" class="navbar-brand">Contabilidad</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <a href="Contabilidad.jsp" class="navbar-brand text-white">Contabilidad</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conta_navbar" aria-controls="conta_navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="CalendarioContable.jsp" class="nav-link">Calendario&nbsp;Contable</a>
+                        <a href="CalendarioContable.jsp" class="nav-link text-white">Calendario&nbsp;Contable</a>
                     </li>                            
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuentas Contables</a>
-                        <div class="dropdown-menu" aria-labelledby="cuentas">
-                            <a class="nav-link" href="CuentasCliente.jsp">Cuentas&nbsp;Clientes</a>
-                            <a class="nav-link" href="CuentasProveedor.jsp">Cuentas&nbsp;Proveedores</a>
-                            <a class="nav-link" href="CuentasEmpresa.jsp">Cuentas&nbsp;Empresa</a>
-                            <a class="nav-link" href="CuentasSat.jsp">Cuentas&nbsp;SAT</a>                                    
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuentas Contables</a>
+                        <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
+                            <a class="nav-link text-white" href="CuentasCliente.jsp">Cuentas&nbsp;Clientes</a>
+                            <a class="nav-link text-white" href="CuentasProveedor.jsp">Cuentas&nbsp;Proveedores</a>
+                            <a class="nav-link text-white" href="CuentasEmpresa.jsp">Cuentas&nbsp;Empresa</a>
+                            <a class="nav-link text-white" href="CuentasSat.jsp">Cuentas&nbsp;SAT</a>                                    
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="AsientosContables.jsp" class="nav-link">Asientos&nbsp;Contables</a>
+                        <a href="AsientosContables.jsp" class="nav-link text-white">Asientos&nbsp;Contables</a>
                     </li> 
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="libros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Libros</a>
-                        <div class="dropdown-menu" aria-labelledby="libros">
-                            <a class="nav-link" href="LibroDiario.jsp">Libro&nbsp;Diario</a>
-                            <a class="nav-link" href="LibroMayor.jsp">Libro&nbsp;Mayor</a>                                    
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="libros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Libros</a>
+                        <div class="dropdown-menu bg-primary" aria-labelledby="libros">
+                            <a class="nav-link text-white" href="LibroDiario.jsp">Libro&nbsp;Diario</a>
+                            <a class="nav-link text-white" href="LibroMayor.jsp">Libro&nbsp;Mayor</a>                                    
                         </div>
                     </li>                            
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
-                    <button class="btn barra text-black my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
+                    <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
                 </form>
             </div>
         </nav>
-    </header>       
+    </header>      
+    <br/><br/>
 <!--Contenedor principal de la pagina-->
 <div class="container-fluid">
     <!--HAciendo una fila para dividir el contenedor en columnas-->
@@ -81,12 +86,12 @@
                 <table class="tabla">
                 	<tr>
                     	<td>
-                    		<a href="AgregarCuentaEmpresa.jsp">Agregar Cuenta Contable</a>
+                    		<a href="AgregarCuentaEmpresa.jsp">Agregar Cuenta Contable a Empresa</a>
                         </td>
                     </tr>
                 	<tr>
                     	<td>
-                    		<a href="EliminarCuentaEmpresa.jsp">Eliminar Cuenta Contable</a>
+                    		<a href="EliminarCuentaEmpresa.jsp">Eliminar Cuenta Contable de Empresa</a>
                         </td>
                     </tr>
                 </table>
@@ -96,31 +101,44 @@
         <!--Columna Central-->
         <div class="col-xs-6 col-md-6 central table-responsive">   
                     <h1 class="titulo">Agregar Cuenta Contable</h1>
-                    <h4 class="titulo">Eliga alguna opci&oacute;n para agregarla</h4>
-                    <form action="" method="post">
-                        <table class="tablas table">
-                            <tr>
-                                <th>Seleccione</th>
-                                <th>Cuenta</th>
-                                <th>Cuenta Superior</th>
-                                <th>Descripci&oacute;n</th>
-                                <th>tipo de cuenta</th>
-                                <th>clase cuenta</th>
-                                <th>Clase SAT</th>
-                                <th>Tipo Naturaleza</th>
-                            </tr>
-                            <tr>
-                                <td><input type="radio"/></td>
-                                <td>100</td>
-                                <td></td>
-                                <td>Activo</td>
-                                <td>t&iacute;tulo</td>
-                                <td>sint&eacute;tica</td>
-                                <td>100-Activo</td>
-                                <td>Deudora</td>
-                            </tr>
-                        </table> 
-                        <input type="submit" value="Agregar"/>
+                    <h4 class="titulo">Eliga alguna opci&oacute;n para agregarla:</h4>
+                    <form role="form" action="../AgregarCuentaEmpresa" method="post">
+                        <div class="table-responsive scroll-y">                            
+                            <table class="tablas table">
+                                <tr>
+                                    <th>Seleccione</th>
+                                    <th>Cuenta</th>
+                                    <th>Descripci&oacute;n</th>                                
+                                </tr>                            
+                                <%
+                                    LinkedList<CuentaSat> lista =ConsultasGenerales.cuentaSat();
+                                    for (int i=0;i<lista.size();i++)
+                                    {
+                                       out.println("<tr>");
+                                       out.println("<td><input type='radio' value='"+lista.get(i).getId()+"' id='codigosat' name='codigosat'></td>");
+                                       out.println("<td><input type='text' value='"+lista.get(i).getCuenta()+"' id='cuenta' disabled='disabled'  name='cuenta'></td>");
+                                       out.println("<td><input type='text' value='"+lista.get(i).getDescripcion()+"'id='descri' disabled='disabled' name='descri'></td>");                           
+                                       out.println("</tr>");
+                                    }
+                                %>
+                            </table> 
+                        </div>
+                        <div class="form-group">
+                            <label for="claveempresa">Ingresa clave para cuenta empresa:</label>                            
+                            <input id="claveempresa" name="claveempresa" class="form-control" type="text" required="required"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="naturaleza">Naturaleza de la cuenta</label>                            
+                            <select id="naturaleza" name="naturaleza" class="form-control">
+                                <option value="x">Selecciona...</option>
+                                <option value="acreedora">Acreedora</option>
+                                <option value="deudora">Deudora</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="reset" value="Cancelar" class="btn btn-default"/>
+                            <input type="submit" value="Agregar" class="btn btn-default"/>
+                        </div>	                        
                     </form>
         </div>
         <!--columna de la derecha-->

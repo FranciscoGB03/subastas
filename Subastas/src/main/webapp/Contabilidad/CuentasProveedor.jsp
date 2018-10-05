@@ -89,12 +89,12 @@
                 <table class="tabla">
                 	<tr>
                     	<td>
-                    		<a href="AgregarCuentaCliente.jsp">Agregar Cuenta Contable</a>
+                    		<a href="AgregarCuentaProveedor.jsp">Agregar Cuenta Contable</a>
                         </td>
                     </tr>
                 	<tr>
                     	<td>
-                    		<a href="EliminarCuentaCliente.jsp">Eliminar Cuenta Contable</a>
+                    		<a href="EliminarCuentaProveedor.jsp">Eliminar Cuenta Contable</a>
                         </td>
                     </tr>
                 </table>

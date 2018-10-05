@@ -1,6 +1,3 @@
-<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
-<%@page import="java.util.LinkedList"%>
-<%@page import="com.sap.contabilidad.clases.CuentaSat"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,34 +80,45 @@
                 </div>
                 <hr/>
                 <table class="tabla">
-                    <tr>
+                	<tr>
                     	<td>
-                    		<a href="AgregarCuentaEmpresa.jsp">Agregar Cuenta Contable a la Empresa</a>
+                    		<a href="AgregarCuentaProveedor.jsp">Agregar Cuenta Contable</a>
                         </td>
-                    </tr>                    
+                    </tr>
+                	<tr>
+                    	<td>
+                    		<a href="EliminarCuentaProveedor.jsp">Eliminar Cuenta Contable</a>
+                        </td>
+                    </tr>
                 </table>
               </div>
             </div>            
         </div>
         <!--Columna Central-->
-        <div class="col-xs-6 col-md-6 central table-responsive scroll-y">   
-                    <h1 class="titulo">Cuentas SAT</h1>                                        
-                    <table class="tablas table">
-                        <tr>
-                            <th>Cuenta</th>                            
-                            <th>Descripci&oacute;n</th>                            
-                        </tr>
-                        <%
-                        LinkedList<CuentaSat> lista =ConsultasGenerales.cuentaSat();
-                        for (int i=0;i<lista.size();i++)
-                        {
-                           out.println("<tr>");                               
-                           out.println("<td>"+lista.get(i).getCuenta()+"</td>");
-                           out.println("<td>"+lista.get(i).getDescripcion()+"</td>");                           
-                           out.println("</tr>");
-                        }
-                        %>
-                    </table>               
+        <div class="col-xs-6 col-md-6 central table-responsive jumbotron">   
+                    <h1 class="titulo">Agregar Cuenta Proveedor</h1>                    
+                    <form role="form" method="post" action="../AgregarCuentaProveedor">
+                        <div class="form-group">
+                          <label for="claveCuenta">Ingrese una clave:</label>
+                          <input type="text" class="form-control" id="claveCuenta" required="required">
+                        </div>
+                        <div class="form-group">
+                          <label for="tipoCuenta">TipoCuenta:</label>
+                          <Select  class="form-control" id="tipoCuenta" required="required">
+                              <option value="x">Seleccione...</option>
+                              <option value="100">Activo</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="cliente">Seleccione Proveedor:</label>
+                          <Select  class="form-control" id="cliente" required="required">
+                              <option value="x">Seleccione...</option>
+                              <option value="juanito">Juanito</option>
+                          </select>
+                        </div>
+                        <button type="reset" class="btn btn-default">Cancelar</button>
+                        <button type="submit" class="btn btn-default">Agregar</button>
+                    </form>
         </div>
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">

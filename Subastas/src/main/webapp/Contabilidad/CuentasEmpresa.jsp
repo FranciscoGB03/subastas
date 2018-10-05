@@ -1,3 +1,6 @@
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.CuentaEmpresa"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,12 +85,12 @@
                 <table class="tabla">
                 	<tr>
                     	<td>
-                    		<a href="AgregarCuentaEmpresa.jsp">Agregar Cuenta Contable</a>
+                    		<a href="AgregarCuentaEmpresa.jsp">Agregar Cuenta Contable a Empresa</a>
                         </td>
                     </tr>
                 	<tr>
                     	<td>
-                    		<a href="EliminarCuentaEmpresa.jsp">Eliminar Cuenta Contable</a>
+                    		<a href="EliminarCuentaEmpresa.jsp">Eliminar Cuenta Contable de Empresa</a>
                         </td>
                     </tr>
                 </table>
@@ -96,21 +99,29 @@
         </div>
         <!--Columna Central-->
         <div class="col-xs-6 col-md-6 central table-responsive">   
-                    <h1 class="titulo">Cuentas Empresa</h1>
-                    <table class="tablas table">
-                        <tr>
-                            <th>CuentaSat</th>                            
-                            <th>clave</th>
-                            <th>Descripci&oacute;n</th> 
-                            <th>Naturaleza</th>
-                        </tr>
-                        <tr>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>Activo</td>                            
-                            <td>Acredora</td>
-                        </tr>                        
-                    </table>               
+            <h1 class="titulo">Cuentas Empresa</h1>
+            <div class="scroll-y">
+                <table class="tablas table">
+                    <tr>                            
+                        <th>Clave</th>
+                        <th>Descripci&oacute;n</th> 
+                        <th>Naturaleza</th>
+                        <th>CuentaSat</th>                            
+                    </tr>
+                    <%
+                    LinkedList<CuentaEmpresa> lista =ConsultasGenerales.cuentaempresa();
+                    for (int i=0;i<lista.size();i++)
+                    {
+                       out.println("<tr>");                               
+                       out.println("<td>"+lista.get(i).getClave()+"</td>");
+                       out.println("<td>"+lista.get(i).getDescripcion()+"</td>");                           
+                       out.println("<td>"+lista.get(i).getNaturaleza()+"</td>");                           
+                       out.println("<td>"+lista.get(i).getClavesat()+"</td>");                           
+                       out.println("</tr>");
+                    }
+                    %>                   
+                </table>               
+            </div>
         </div>
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">

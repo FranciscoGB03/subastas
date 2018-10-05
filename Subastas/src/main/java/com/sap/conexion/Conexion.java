@@ -89,9 +89,11 @@ public class Conexion {
         return r;
     }
     /**
-     * 
+     * Metodo para obtener varios campos de una clave
      * @param clave
      * @param campos crear una cadena con todos los campos separados por comas
+     * @param tabla
+     * @param numcampos
      * @return
      * @throws SQLException 
      */
@@ -103,7 +105,7 @@ public class Conexion {
         //stmt = conn.createStatement();        
         ps=conn.prepareStatement("SELECT "+campos+" FROM "+tabla+" WHERE clave='"+clave+"'");               
         //ResultSet rs = stmt.executeQuery("SELECT clave,modulo,tipo, fecha FROM asientos WHERE clave=");
-          ResultSet rs= ps.executeQuery();
+        ResultSet rs= ps.executeQuery();
         while (rs.next()) {                
                 //System.out.println(rs.getInt(1));
 //                r.add(rs.getString(1));
@@ -111,6 +113,24 @@ public class Conexion {
 //                r.add(rs.getString(3));
 //                r.add(rs.getString(4));
 //                r.add(rs.getString(5));                
+                  for (int i = 1; i <=numcampos; i++) {
+                      r.add(rs.getObject(i));                      
+                  }
+            }
+            
+        closeDB();        
+        return r;
+    }
+        public ArrayList consultaVariosCamposUnaClave2(String condicion,String campos,String tabla,int numcampos) throws SQLException{
+        openDB();    
+        ArrayList r=new ArrayList();
+        //Statement stmt;
+        PreparedStatement ps;
+        //stmt = conn.createStatement();        
+        ps=conn.prepareStatement("SELECT "+campos+" FROM "+tabla+" WHERE "+condicion);               
+        //ResultSet rs = stmt.executeQuery("SELECT clave,modulo,tipo, fecha FROM asientos WHERE clave=");
+        ResultSet rs= ps.executeQuery();
+        while (rs.next()) {                     
                   for (int i = 1; i <=numcampos; i++) {
                       r.add(rs.getObject(i));                      
                   }

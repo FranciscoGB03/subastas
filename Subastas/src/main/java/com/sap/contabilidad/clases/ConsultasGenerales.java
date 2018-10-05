@@ -71,5 +71,29 @@ public class ConsultasGenerales {
         conn.close();
         return l;
     }
+    public static LinkedList cuentaempresa() throws SQLException, ClassNotFoundException {        
+        Connection conn;
+        Class.forName("org.postgresql.Driver");
+        LinkedList <CuentaEmpresa> l=new LinkedList<CuentaEmpresa>();
+        Properties connProp = new Properties();
+        connProp.put("user", "postgres");
+        connProp.put("password", "root");
+        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
+        Statement stmt;        
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT ce.id,ce.clave,cs.codigosat,ce.descripcion,ce.naturaleza FROM cuentaempresa as ce, cuentasat as cs where ce.id_sat=cs.id;");
+            while (rs.next()) {
+                CuentaEmpresa ce=new CuentaEmpresa();
+                ce.setId(rs.getInt("id"));             
+                ce.setClave(rs.getString("clave"));
+                ce.setClavesat(rs.getDouble("codigosat"));
+                ce.setDescripcion(rs.getString("descripcion"));
+                ce.setNaturaleza(rs.getString("naturaleza"));
+                l.add(ce);
+            }                    
+        conn.close();
+        return l;
+    }
+    
     
 }
