@@ -36,20 +36,14 @@ public class ActualizarPeriodo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");             
+        Conexion c=new Conexion();
+        String campos="periodo="+request.getParameter("ejercicio")+", fechaini='"+request.getParameter("fechaini")+"', fechafin='"+request.getParameter("fechafin")+"', estatus='"+request.getParameter("estado")+"'";
+        System.out.println("los campos son:"+campos);
+        String referencia="clave='"+request.getParameter("claveperiodo")+"'";
+        System.out.println("cadena de referencia:"+referencia);
+        c.actualizar(campos,"calen_contable", referencia);
+        response.sendRedirect("Contabilidad/CalendarioContable.jsp");
         
-        try (PrintWriter out = response.getWriter()) {
-            
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ActualizarPeriodo</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ActualizarPeriodo at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }        
     }
 
     /**

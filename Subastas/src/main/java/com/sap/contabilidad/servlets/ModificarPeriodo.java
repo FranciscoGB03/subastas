@@ -5,8 +5,12 @@
  */
 package com.sap.contabilidad.servlets;
 
+import com.sap.conexion.Conexion;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,20 +34,19 @@ public class ModificarPeriodo extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ModificarPeriodo</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ModificarPeriodo at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        Conexion c=new Conexion();
+        String clave=request.getParameter("clavep");
+        System.out.println("la clave a buscar es:"+clave);
+        String campos="clave,periodo,fechaini,fechafin,estatus";
+        ArrayList l=c.consultaVariosCamposUnaClave(clave,campos,"calen_contable",5);
+        request.getSession().setAttribute("clave", l.get(0));         
+        request.getSession().setAttribute("periodo", l.get(1));
+        request.getSession().setAttribute("fechaini", l.get(2));
+        request.getSession().setAttribute("fechafin", l.get(3));
+        request.getSession().setAttribute("estatus", l.get(4));
+        response.sendRedirect("Contabilidad/ModificarPeriodoContable.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +61,11 @@ public class ModificarPeriodo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ModificarPeriodo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -72,7 +79,11 @@ public class ModificarPeriodo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ModificarPeriodo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

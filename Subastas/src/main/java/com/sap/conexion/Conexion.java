@@ -44,16 +44,27 @@ public class Conexion {
         closeDB();
         return rs;
     }
-    
+    /**
+     * 
+     * @param campos
+     * @param tabla
+     * @param condicion
+     * @param cantidad
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList consulta(String campos, String tabla, String condicion, int cantidad) throws SQLException {
         openDB();
         ArrayList r=new ArrayList();
         PreparedStatement ps;
         ps=conn.prepareStatement("SELECT "+campos+" FROM "+tabla+" WHERE "+condicion);
-        ResultSet rs= ps.executeQuery();
-        while(rs.next()){
-            for(int i = 1 ; i <= cantidad ; i++){r.add(rs.getObject(i));}
-        }
+        ResultSet rs= ps.executeQuery();        
+            while(rs.next()){
+                for(int i = 1 ; i <= cantidad ; i++){
+                    r.add(rs.getObject(i));
+                }
+            }        
+        
         closeDB();        
         return r;
     }
@@ -74,6 +85,37 @@ public class Conexion {
             r.add(rs.getObject(i));
             i=i+1;
         }
+        closeDB();        
+        return r;
+    }
+    /**
+     * 
+     * @param clave
+     * @param campos crear una cadena con todos los campos separados por comas
+     * @return
+     * @throws SQLException 
+     */
+    public ArrayList consultaVariosCamposUnaClave(String clave,String campos,String tabla,int numcampos) throws SQLException{
+        openDB();    
+        ArrayList r=new ArrayList();
+        //Statement stmt;
+        PreparedStatement ps;
+        //stmt = conn.createStatement();        
+        ps=conn.prepareStatement("SELECT "+campos+" FROM "+tabla+" WHERE clave='"+clave+"'");               
+        //ResultSet rs = stmt.executeQuery("SELECT clave,modulo,tipo, fecha FROM asientos WHERE clave=");
+          ResultSet rs= ps.executeQuery();
+        while (rs.next()) {                
+                //System.out.println(rs.getInt(1));
+//                r.add(rs.getString(1));
+//                r.add(rs.getInt(2));
+//                r.add(rs.getString(3));
+//                r.add(rs.getString(4));
+//                r.add(rs.getString(5));                
+                  for (int i = 1; i <=numcampos; i++) {
+                      r.add(rs.getObject(i));                      
+                  }
+            }
+            
         closeDB();        
         return r;
     }

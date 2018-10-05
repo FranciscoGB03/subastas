@@ -118,25 +118,29 @@
                         <br>
                         <form role="form" action="../ActualizarPeriodo" method="post">                            
                             <div class="form-group">
+                                <label for="fechaini">Clave a Modificar:</label>                                                                
+                                <%out.println("<input id='claveperiodo' name='claveperiodo' class='form-control' type='text' value="+request.getSession().getAttribute("clave")+">");%>
+                            </div>
+                            <div class="form-group">
                                 <label for="ejercicio">A&ntilde;o:</label>                               
                                 <select id="ejercicio" name="ejercicio" class="form-control">
-                                    <option value="x">Seleccione...</option>
+                                    <%out.println("<option value="+request.getSession().getAttribute("periodo")+">"+request.getSession().getAttribute("periodo")+"</option>");%>
                                     <option value="2018">2018</option>
                                     <option value="2017">2017</option>                                        
                                 </select>                                
                             </div>         
                             <div class="form-group">
-                                <label for="fechaini">Fecha de inicio:</label>                                
-                                <input id="fechaini" name="fechaini" class="form-control" type="date"/>                                                                  
+                                <label for="fechaini">Fecha de inicio:</label>                                                                
+                                <%out.println("<input id='fechaini' name='fechaini' class='form-control' type='date' value="+request.getSession().getAttribute("fechaini")+">");%>
                             </div>
                             <div class="form-group">
                                 <label for="fechafin">Fecha final:</label>                                
-                                <input id="fechafin" name="fechafin" class="form-control" type="date"/>                                                                    
+                                <%out.println("<input id='fechafin' name='fechafin' class='form-control' type='date' value="+request.getSession().getAttribute("fechafin")+">");%>
                             </div>
                             <div class="form-group">
                                 <label for="estado">Estado:</label>                                
                                 <select id="estado" name="estado" class="form-control">
-                                    <option value="x">Seleccione...</option>
+                                    <%out.println("<option value="+request.getSession().getAttribute("estatus")+">"+request.getSession().getAttribute("estatus")+"</option>");%>
                                     <option value="abierto">Abierto</option>
                                     <option value="bloqueado">Bloqueado</option>
                                     <option value="cerrado">Cerrado</option>
