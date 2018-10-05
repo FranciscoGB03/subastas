@@ -1,6 +1,6 @@
-package com.fgb.subastas.rh;
+package com.sap.rh.servlets;
 
-import com.fgb.subastas.conexion.Conexion;
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -51,7 +51,7 @@ public class ContratarEmpleado extends HttpServlet {
                 + "puesto,horario,actividad,sueldo,cuenta,status,contrasena", "empleado",
                 "'"+nombre+"','"+paterno+"','"+materno+"','"+nac+"','"+curp+"','"+rfc+"',"+edad+",'"+lugar+"','"+dir+"','"+tel+"',"+area
                         +","+puesto+",'"+horario+"','"+activ+"',"+sueldo+",'"+cuenta+"','Activo','sap123'");
-        response.sendRedirect("RecursosHumanos/ContratarEmpleado.jsp");
+        response.sendRedirect("RH/ContratarEmpleado.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

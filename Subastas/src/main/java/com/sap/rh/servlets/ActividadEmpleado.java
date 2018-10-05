@@ -1,6 +1,6 @@
-package com.fgb.subastas.login;
+package com.sap.rh.servlets;
 
-import com.fgb.subastas.conexion.Conexion;
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -13,8 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+/**
+ *
+ * @author Windows 10 Pro
+ */
+@WebServlet(urlPatterns = {"/ActividadEmpleado"})
+public class ActividadEmpleado extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -24,40 +28,21 @@ public class Login extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.lang.ClassNotFoundException
-     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+        Conexion c = new Conexion();
         try (PrintWriter out = response.getWriter()) {
-            String usuario = request.getParameter("user");
-            String pass = request.getParameter("password");
-            System.out.println("usuario:"+usuario);
-            System.out.println("pass:"+pass);
-            Conexion c = new Conexion();
-            ArrayList lista = c.consulta("area", "empleado", "id = "+usuario+" and contrasena = '"+pass+"'",1);
+            String empleado = request.getParameter("actividadIdEmp");
+            String actividad = request.getParameter("actividadEmpleado");
+            ArrayList lista = c.consulta("id", "empleado", "id = "+ empleado, 1);
             if(!lista.isEmpty()){
-                Integer area = Integer.parseInt(lista.get(0).toString());
-                System.out.println("area:"+area);
-                //c.insertar("descripcion", "log", "'Inicio de sesion para "+usuario+"'");
-                switch(area){
-                    case 1 :
-                        response.sendRedirect("Gerencia/InicioGerencia.jsp");
-                        break;
-                    case 2 :
-                        response.sendRedirect("RH/rh_index.jsp");
-                        break;
-                    case 3 :
-                        response.sendRedirect("Contabilidad/Contabilidad.jsp");
-                        break;
-                    default:
-                        response.sendRedirect("index.jsp");
-                        break;
-                }
+                c.actualizar("actividad = '" + actividad + "'", "empleado", "id = " + empleado);
+                response.sendRedirect("RH/ActividadEmpleado.jsp");
             }else{
-                c.insertar("descripcion", "log", "'Inicio de sesion fallido para "+usuario+"'");
-                response.sendRedirect("index.jsp");
+                request.getSession().setAttribute("motivo", "El empleado no existe");
+                response.sendRedirect("RH/Error.jsp");
             }
         }
     }
@@ -76,8 +61,10 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ActividadEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ActividadEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -90,4 +77,5 @@ public class Login extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

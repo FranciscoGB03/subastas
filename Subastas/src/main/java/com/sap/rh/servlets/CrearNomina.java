@@ -1,7 +1,6 @@
-package com.fgb.subastas.rh;
+package com.sap.rh.servlets;
 
-
-import com.fgb.subastas.conexion.Conexion;
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Windows 10 Pro
  */
-@WebServlet(urlPatterns = {"/ModificarEmpleado"})
-public class ModificarEmpleado extends HttpServlet {
+@WebServlet(urlPatterns = {"/CrearNomina"})
+public class CrearNomina extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +31,22 @@ public class ModificarEmpleado extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        String empleado = request.getParameter("modificarIdEmpleado");
+        String empleado = request.getParameter("idCrearNomina");
+        String cantidad = request.getParameter("cantidadCrearNomina");
+        String estado = request.getParameter("estadoCrearNomina");
+        String recurso = request.getParameter("recursoCrearNomina");
+        String regimen = request.getParameter("regimenCrearNomina");
+        String periodicidad = request.getParameter("periodicidadCrearNomina");
+        String tipo = request.getParameter("tipoCrearNomina");
+        String percepcion = request.getParameter("percepcionCrearNomina");
         Conexion c = new Conexion();
-        ArrayList lista = c.consulta("nombre,primer_apellido,segundo_apellido,nacionalidad,curp,rfc,edad,lugar_nacimiento,direccion,telefono,"
-                    + "area,puesto,horario,sueldo,cuenta,id","empleado", "id = "+empleado, 16);
-        if(!lista.isEmpty()){
-            request.getSession().setAttribute("empleado",lista);
-            response.sendRedirect("RecursosHumanos/ModificarResultado.jsp");
-        }else{
-            request.getSession().setAttribute("motivo", "El empleado no existe");
-            response.sendRedirect("RecursosHumanos/Error.jsp");
+        ArrayList lista = c.consulta("cuenta", "empleado", "id = "+empleado, 1);
+        String cuenta = lista.get(0).toString();
+        if(!cuenta.isEmpty()){
+            c.insertar("empleado,cantidad,cuenta,estado,origen_recurso,regimen,periodicidad,tipo,percepcion,situacion", "nomina",
+                    empleado+","+cantidad+",'"+cuenta+"','"+estado+"','"+recurso+"','"+regimen+"','"+periodicidad+"','"+tipo+"','"+percepcion+"',-1");
         }
+        response.sendRedirect("RH/CrearNomina.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,9 +64,9 @@ public class ModificarEmpleado extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CrearNomina.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CrearNomina.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

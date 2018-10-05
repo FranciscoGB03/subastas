@@ -1,4 +1,4 @@
-package com.fgb.subastas.conexion;
+package com.sap.conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class Conexion {
     
-    Connection conn;
+    public Connection conn;
     
     public Conexion() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
@@ -26,6 +26,7 @@ public class Conexion {
         connProp.put("password", "root");
         conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
     }
+        
 
     /**
     * Cierra la conexión con la base de datos
@@ -52,6 +53,26 @@ public class Conexion {
         ResultSet rs= ps.executeQuery();
         while(rs.next()){
             for(int i = 1 ; i <= cantidad ; i++){r.add(rs.getObject(i));}
+        }
+        closeDB();        
+        return r;
+    }
+    /**
+     * Consulta general     
+     * @param tabla     
+     * @return
+     * @throws SQLException 
+     */
+    public ArrayList consultaGeneral(String tabla) throws SQLException {
+        openDB();
+        ArrayList r=new ArrayList();
+        PreparedStatement ps;
+        ps=conn.prepareStatement("SELECT * FROM "+tabla+";");      
+        ResultSet rs= ps.executeQuery();
+        int i=1;
+        while(rs.next()){
+            r.add(rs.getObject(i));
+            i=i+1;
         }
         closeDB();        
         return r;

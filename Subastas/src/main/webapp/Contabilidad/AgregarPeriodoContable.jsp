@@ -113,11 +113,7 @@
                             </div>                                                        
                             <div class="form-group">
                                 <label for="ejercicio">A&ntilde;o:</label>                                                        
-                                <select id="ejercicio" name="ejercicio" class="form-control">
-                                    <option value="x">Seleccione...</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2017">2017</option>
-                                </select>
+                                <input id="ejercicio" type="number" name="ejercicio" class="form-control">                                    
                             </div>                                                        
                             <div class="form-group">
                                 <label for="fechaini">Fecha de inicio:</label>                                                                

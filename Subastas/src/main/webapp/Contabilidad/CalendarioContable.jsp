@@ -100,43 +100,16 @@
                 </div>            
             </div>
             <!--Columna Central-->
-            <div class="col-xs-6 col-md-6 central table-responsive">              
+            <div class="col-xs-6 col-md-6 central table-responsive">                    
                         <table class="tablas table">
                             <tr>                                
                                 <th>Clave</th>
                                 <th>Periodo</th>
                                 <th>Fecha inicio</th>
                                 <th>Fecha final</th>
-                                <th>Status</th>
+                                <th>Estatus</th>
                             </tr>
-                            <tr>                                
-                                <td>2018-01</td>
-                                <td>2018</td>
-                                <td>01/01/2018</td>
-                                <td>31/01/2018</td>
-                                <td>Abierto</td>
-                            </tr>
-                            <tr>                                
-                                <td>2018-02</td>
-                                <td>2018</td>
-                                <td>01/02/2018</td>
-                                <td>28/02/2018</td>
-                                <td>Abierto</td>
-                            </tr>
-                            <tr>                                
-                                <td>2018-03</td>
-                                <td>2018</td>
-                                <td>01/03/2018</td>
-                                <td>31/03/2018</td>
-                                <td>Abierto</td>
-                            </tr>
-                            <tr>                                
-                                <td>2018-04</td>
-                                <td>2018</td>
-                                <td>01/04/2018</td>
-                                <td>30/04/2018</td>
-                                <td>Cerrado</td>
-                            </tr>
+                           
                         </table>               
             </div>
             <!--columna de la derecha-->

@@ -1,6 +1,6 @@
-package com.fgb.subastas.rh;
+package com.sap.rh.servlets;
 
-import com.fgb.subastas.conexion.Conexion;
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class BuscarEmpleado extends HttpServlet {
             }
         }
         request.getSession().setAttribute("empleados", lista);
-        response.sendRedirect("RecursosHumanos/BuscarResultado.jsp");
+        response.sendRedirect("RH/BuscarResultado.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

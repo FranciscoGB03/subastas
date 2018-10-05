@@ -1,6 +1,6 @@
-package com.fgb.subastas.rh;
+package com.sap.principal.login;
 
-import com.fgb.subastas.conexion.Conexion;
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -13,12 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Windows 10 Pro
- */
-@WebServlet(urlPatterns = {"/ActividadEmpleado"})
-public class ActividadEmpleado extends HttpServlet {
+@WebServlet(urlPatterns = {"/Login"})
+public class Login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,21 +24,40 @@ public class ActividadEmpleado extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        Conexion c = new Conexion();
         try (PrintWriter out = response.getWriter()) {
-            String empleado = request.getParameter("actividadIdEmp");
-            String actividad = request.getParameter("actividadEmpleado");
-            ArrayList lista = c.consulta("id", "empleado", "id = "+ empleado, 1);
+            String usuario = request.getParameter("user");
+            String pass = request.getParameter("password");
+            System.out.println("usuario:"+usuario);
+            System.out.println("pass:"+pass);
+            Conexion c = new Conexion();
+            ArrayList lista = c.consulta("area", "empleado", "id = "+usuario+" and contrasena = '"+pass+"'",1);
             if(!lista.isEmpty()){
-                c.actualizar("actividad = '" + actividad + "'", "empleado", "id = " + empleado);
-                response.sendRedirect("RecursosHumanos/ActividadEmpleado.jsp");
+                Integer area = Integer.parseInt(lista.get(0).toString());
+                System.out.println("area:"+area);
+                //c.insertar("descripcion", "log", "'Inicio de sesion para "+usuario+"'");
+                switch(area){
+                    case 1 :
+                        response.sendRedirect("Gerencia/InicioGerencia.jsp");
+                        break;
+                    case 2 :
+                        response.sendRedirect("RH/rh_index.jsp");
+                        break;
+                    case 3 :
+                        response.sendRedirect("Contabilidad/Contabilidad.jsp");
+                        break;
+                    default:
+                        response.sendRedirect("index.jsp");
+                        break;
+                }
             }else{
-                request.getSession().setAttribute("motivo", "El empleado no existe");
-                response.sendRedirect("RecursosHumanos/Error.jsp");
+                c.insertar("descripcion", "log", "'Inicio de sesion fallido para "+usuario+"'");
+                response.sendRedirect("index.jsp");
             }
         }
     }
@@ -61,10 +76,8 @@ public class ActividadEmpleado extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ActividadEmpleado.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ActividadEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -77,5 +90,4 @@ public class ActividadEmpleado extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

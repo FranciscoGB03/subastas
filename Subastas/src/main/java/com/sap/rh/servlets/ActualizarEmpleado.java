@@ -1,6 +1,6 @@
-package com.fgb.subastas.rh;
+package com.sap.rh.servlets;
 
-import com.fgb.subastas.conexion.Conexion;
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -52,7 +52,7 @@ public class ActualizarEmpleado extends HttpServlet {
                 "',nacionalidad = '"+nac+"',edad = "+edad+",lugar_nacimiento = '"+lugar+"',direccion = '"+dir+"',telefono = '"+tel+
                 "',area = "+area+",puesto = "+puesto+",horario = '"+horario+"',sueldo = "+sueldo+",cuenta = '"+cuenta+"'"
                 , "empleado", "id = "+empleado);
-        response.sendRedirect("RecursosHumanos/ModificarEmpleado.jsp");
+        response.sendRedirect("RH/ModificarEmpleado.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

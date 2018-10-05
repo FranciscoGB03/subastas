@@ -1,17 +1,15 @@
-package com.fgb.subastas.rh;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.sap.contabilidad.servlets;
 
-
-import com.fgb.subastas.conexion.Conexion;
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,13 +17,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Windows 10 Pro
+ * @author fgb
  */
-@WebServlet(urlPatterns = {"/DespedirEmpleado"})
-public class DespedirEmpleado extends HttpServlet {
+@WebServlet(name = "AgregarPeriodoContable", urlPatterns = {"/AgregarPeriodoContable"})
+public class AgregarPeriodoContable extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,22 +38,23 @@ public class DespedirEmpleado extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String empleado = request.getParameter("despedirIdEmpleado");
-            Conexion c = new Conexion();
-            ArrayList lista = c.consulta("id", "empleado", "id = " + empleado, 1);
-            if(!lista.isEmpty()){
-                c.actualizar("status = 'Despedido'", "empleado", "id = " + empleado);
-                c.actualizar("actividad = ''", "empleado", "id = " + empleado);
-                response.sendRedirect("RecursosHumanos/DespedirEmpleado.jsp");
-            }else{
-                request.getSession().setAttribute("motivo", "El empleado no existe");
-                response.sendRedirect("RecursosHumanos/Error.jsp");
-            }
-        }
+        Conexion c=new Conexion();
+        int resultado=0;        
+        String campos="'"+request.getParameter("clavep")+"',"+request.getParameter("ejercicio")+",'"+ request.getParameter("fechaini")+"','"+request.getParameter("fechafin")+"','"+request.getParameter("estado")+"'";
+        System.out.println("cadena:"+campos);         
+        
+        resultado=c.insertar("clave,periodo,fechaini,fechafin,estatus","calen_contable", campos);                            
+        System.out.println("el resultado fue:"+resultado);
+        if(resultado!=1){
+            request.getSession().setAttribute("motivo", "Error de conexión, intentelo nuevamente!");
+            response.sendRedirect("Contabilidad/Error.jsp");            
+        }else{            
+            response.sendRedirect("Contabilidad/CalendarioContable.jsp");
+        }        
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+  
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -69,9 +69,9 @@ public class DespedirEmpleado extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DespedirEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AgregarPeriodoContable.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(DespedirEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AgregarPeriodoContable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
