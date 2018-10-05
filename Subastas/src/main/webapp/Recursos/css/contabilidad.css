@@ -61,3 +61,12 @@ h4{
         border-style: solid;
         border-width: 1px;
         }        
+.scroll-y{
+        height: 350px;
+	width: auto;
+	overflow: auto;
+	border: 1px solid #666;
+	background-color: #ccc;
+	padding: 8px;
+        margin: auto auto;
+        }        

@@ -14,7 +14,12 @@ import java.util.Properties;
  * @author fgb
  */
 public class ConsultasGenerales {
-    
+    /**
+     * metodo para mostrar los periodos contables
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     public static LinkedList consultaGeneral() throws SQLException, ClassNotFoundException {        
         Connection conn;
         Class.forName("org.postgresql.Driver");
@@ -39,4 +44,32 @@ public class ConsultasGenerales {
         conn.close();
         return l;
     }
+    /**
+     * metodo para desplegar las cuentas contables
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
+    public static LinkedList cuentaSat() throws SQLException, ClassNotFoundException {        
+        Connection conn;
+        Class.forName("org.postgresql.Driver");
+        LinkedList <CuentaSat> l=new LinkedList<CuentaSat>();
+        Properties connProp = new Properties();
+        connProp.put("user", "postgres");
+        connProp.put("password", "root");
+        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
+        Statement stmt;        
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM cuentasat");
+            while (rs.next()) {
+                CuentaSat cs=new CuentaSat();
+                cs.setId(rs.getInt("id"));
+                cs.setCuenta(rs.getDouble("codigosat"));
+                cs.setDescripcion(rs.getString("descripcion"));                                
+                l.add(cs);
+            }                    
+        conn.close();
+        return l;
+    }
+    
 }
