@@ -93,24 +93,26 @@
             </div>            
         </div>
         <!--Columna Central-->
-        <div class="col-xs-6 col-md-6 central table-responsive scroll-y">   
-                    <h1 class="titulo">Cuentas SAT</h1>                                        
-                    <table class="tablas table">
-                        <tr>
-                            <th>Cuenta</th>                            
-                            <th>Descripci&oacute;n</th>                            
-                        </tr>
-                        <%
-                        LinkedList<CuentaSat> lista =ConsultasGenerales.cuentaSat();
-                        for (int i=0;i<lista.size();i++)
-                        {
-                           out.println("<tr>");                               
-                           out.println("<td>"+lista.get(i).getCuenta()+"</td>");
-                           out.println("<td>"+lista.get(i).getDescripcion()+"</td>");                           
-                           out.println("</tr>");
-                        }
-                        %>
-                    </table>               
+        <div class="col-xs-6 col-md-6 central table-responsive">   
+            <h1 class="titulo">Cuentas SAT</h1>       
+            <div class="scroll-y">
+                <table class="tablas table">
+                    <tr>
+                        <th>Cuenta</th>                            
+                        <th>Descripci&oacute;n</th>                            
+                    </tr>
+                    <%
+                    LinkedList<CuentaSat> lista =ConsultasGenerales.cuentaSat();
+                    for (int i=0;i<lista.size();i++)
+                    {
+                       out.println("<tr>");                               
+                       out.println("<td>"+lista.get(i).getCuenta()+"</td>");
+                       out.println("<td>"+lista.get(i).getDescripcion()+"</td>");                           
+                       out.println("</tr>");
+                    }
+                    %>
+                </table>
+            </div>
         </div>
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">

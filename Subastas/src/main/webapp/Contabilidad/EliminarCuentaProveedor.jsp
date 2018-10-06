@@ -1,3 +1,6 @@
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.CuentaProveedor"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,12 +85,12 @@
                 <table class="tabla">
                 	<tr>
                     	<td>
-                    		<a href="AgregarCuentaCliente.jsp">Agregar Cuenta Contable</a>
+                    		<a href="AgregarCuentaProveedor.jsp">Agregar Cuenta Proveedor</a>
                         </td>
                     </tr>
                 	<tr>
                     	<td>
-                    		<a href="EliminarCuentaCliente.jsp">Eliminar Cuenta Contable</a>
+                    		<a href="EliminarCuentaProveedor.jsp">Eliminar Cuenta Proveedor</a>
                         </td>
                     </tr>
                 </table>
@@ -99,21 +102,29 @@
                     <h1 class="titulo">Eliminar Cuenta Contable</h1>
                     <h4 class="titulo">Eliga alguna opci&oacute;n para eliminarla</h4>
                     
-                    <form action="" method="post">
-                        <table class="tablas table">
-                            <tr>
-                                <th>Seleccione</th>
-                                <th>Clave</th>
-                                <th>Cuenta Empresa</th>
-                                <th>Nombre</th>                                
-                            </tr>
-                            <tr>
-                                <td><input type="radio"/></td>
-                                <td>100</td>
-                                <td>100</td>
-                                <td>Juanito</td>                                
-                            </tr>
-                        </table> 
+                    <form action="../EliminarCuentaProveedor" method="post">
+                        <div class="scroll-y">
+                            <table class="tablas table">
+                                <tr>
+                                    <th>Seleccione</th>
+                                    <th>Clave</th>
+                                    <th>Cuenta Empresa</th>
+                                    <th>Nombre</th>                                
+                                </tr>
+                                  <%
+                                        LinkedList<CuentaProveedor> lista =ConsultasGenerales.cuentaProveedor();
+                                        for (int i=0;i<lista.size();i++)
+                                        {
+                                           out.println("<tr>");
+                                           out.println("<td><input type='radio' value='"+lista.get(i).getId()+"' id='codigoprov' name='codigoprov'></td>");
+                                           out.println("<td>"+lista.get(i).getClave()+"</td>");
+                                           out.println("<td>"+lista.get(i).getCuentaempresa()+"</td>");                           
+                                           out.println("<td>"+lista.get(i).getNombre()+"</td>");                                                                  
+                                           out.println("</tr>");
+                                        }
+                                    %>
+                            </table> 
+                        </div>
                         <input type="submit" value="Eliminar"/>
                     </form>                    
         </div>

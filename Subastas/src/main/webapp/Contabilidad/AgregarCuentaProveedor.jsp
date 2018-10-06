@@ -1,3 +1,7 @@
+<%@page import="com.sap.contabilidad.clases.CuentaEmpresa"%>
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.Proveedor"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,12 +86,12 @@
                 <table class="tabla">
                 	<tr>
                     	<td>
-                    		<a href="AgregarCuentaProveedor.jsp">Agregar Cuenta Contable</a>
+                    		<a href="AgregarCuentaProveedor.jsp">Agregar Cuenta Proveedor</a>
                         </td>
                     </tr>
                 	<tr>
                     	<td>
-                    		<a href="EliminarCuentaProveedor.jsp">Eliminar Cuenta Contable</a>
+                    		<a href="EliminarCuentaProveedor.jsp">Eliminar Cuenta Proveedor</a>
                         </td>
                     </tr>
                 </table>
@@ -99,21 +103,33 @@
                     <h1 class="titulo">Agregar Cuenta Proveedor</h1>                    
                     <form role="form" method="post" action="../AgregarCuentaProveedor">
                         <div class="form-group">
-                          <label for="claveCuenta">Ingrese una clave:</label>
-                          <input type="text" class="form-control" id="claveCuenta" required="required">
+                          <label for="clavec">Ingrese una clave:</label>
+                          <input type="text" class="form-control" id="clavec" name="clavec" required="required">
                         </div>
                         <div class="form-group">
                           <label for="tipoCuenta">TipoCuenta:</label>
-                          <Select  class="form-control" id="tipoCuenta" required="required">
+                          <Select  class="form-control" id="tipoCuenta" name="tipoCuenta" required="required">
                               <option value="x">Seleccione...</option>
-                              <option value="100">Activo</option>
+                                <%
+                                    LinkedList<CuentaEmpresa> lista =ConsultasGenerales.cuentaempresa();
+                                    for (int i=0;i<lista.size();i++)
+                                    {
+                                       out.println("<option value='"+lista.get(i).getId()+"'>"+lista.get(i).getDescripcion()+"</option>");                                   
+                                    }
+                                %>  
                           </select>
                         </div>
                         <div class="form-group">
-                          <label for="cliente">Seleccione Proveedor:</label>
-                          <Select  class="form-control" id="cliente" required="required">
+                          <label for="proveedor">Seleccione Proveedor:</label>
+                          <Select  class="form-control" id="proveedor" name="proveedor">
                               <option value="x">Seleccione...</option>
-                              <option value="juanito">Juanito</option>
+                            <%
+                                LinkedList<Proveedor> l =ConsultasGenerales.opcionesProveedor();
+                                for (int i=0;i<l.size();i++)
+                                {                                   
+                                   out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</option>");                                   
+                                }
+                            %>  
                           </select>
                         </div>
                         <button type="reset" class="btn btn-default">Cancelar</button>

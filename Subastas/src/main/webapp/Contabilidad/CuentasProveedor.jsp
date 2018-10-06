@@ -4,6 +4,9 @@
     Author     : fgb
 --%>
 
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.CuentaProveedor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,12 +92,12 @@
                 <table class="tabla">
                 	<tr>
                     	<td>
-                    		<a href="AgregarCuentaProveedor.jsp">Agregar Cuenta Contable</a>
+                    		<a href="AgregarCuentaProveedor.jsp">Agregar Cuenta Proveedor</a>
                         </td>
                     </tr>
                 	<tr>
                     	<td>
-                    		<a href="EliminarCuentaProveedor.jsp">Eliminar Cuenta Contable</a>
+                    		<a href="EliminarCuentaProveedor.jsp">Eliminar Cuenta Proveedor</a>
                         </td>
                     </tr>
                 </table>
@@ -103,22 +106,30 @@
         </div>
         <!--Columna Central-->
         <div class="col-xs-6 col-md-6 central table-responsive">   
-                    <h1 class="titulo">Cuentas Proveedores</h1>
-                    <table class="tablas table">
-                        <tr>
-                            <th>id</th>
-                            <th>Cuenta empresa</th>
-                            <th>clave proveedor</th>      
-                            <th>nombre/raz&oacute;n social</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>100</td>
-                            <td>101</td>
-                            <td>Juanito</td>                                               
-                        </tr>
-                        
-                    </table>               
+            <h1 class="titulo">Cuentas Proveedores</h1>
+            <div class="scroll-y">
+                <table class="tablas table">
+                    <tr>
+                        <th>id</th>
+                        <th>clave proveedor</th>      
+                        <th>Cuenta empresa</th>                            
+                        <th>nombre/raz&oacute;n social</th>
+                    </tr>
+                    <%
+                        LinkedList<CuentaProveedor> lista =ConsultasGenerales.cuentaProveedor();
+                        for (int i=0;i<lista.size();i++)
+                        {
+                           out.println("<tr>");
+                           out.println("<td>"+lista.get(i).getId()+"</td>");
+                           out.println("<td>"+lista.get(i).getClave()+"</td>");
+                           out.println("<td>"+lista.get(i).getCuentaempresa()+"</td>");                           
+                           out.println("<td>"+lista.get(i).getNombre()+"</td>");                                                                  
+                           out.println("</tr>");
+                        }
+                    %>
+
+                </table>               
+            </div>
         </div>
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">
