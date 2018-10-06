@@ -5,8 +5,12 @@
  */
 package com.sap.contabilidad.servlets;
 
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,20 +34,35 @@ public class AgregarAsientoDetalle extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AgregarAsientoDetalle</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AgregarAsientoDetalle at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        Conexion c=new Conexion();
+        //valor que determina la cuenta
+        int tipo= Integer.valueOf(request.getParameter("tipo").toString());
+        System.out.println("valor de tipo:"+tipo);
+        //campos
+        String idasientog=request.getParameter("claveAsiento");
+        String idcuentacli=request.getParameter("cuentacli");
+        String idcuentapro=request.getParameter("cuentapro");
+        String monto=request.getParameter("monto");
+        String descripcion=request.getParameter("descripcion");
+        String idfactu=request.getParameter("idfactura");
+        //valores para la tabla de asientodetalle
+        String valores=idasientog+","+idcuentacli+","+monto+",'"+descripcion+"',"+idfactu;
+        System.out.println("los valores del cliente son:"+valores);
+        String valores2=idasientog+","+idcuentapro+","+monto+",'"+descripcion+"',"+idfactu;
+        System.out.println("los valores del proveedor son:"+valores2);
+        String tabla="asientodetalle";
+        if(tipo==1){
+            String camposcli="idasientog,idcuentacli,monto,descripcion,idfactu";
+            System.out.println("campos cliente:"+camposcli);
+            c.insertar(camposcli, tabla, valores);
+        }else{
+            String campospro="idasientog,idcuentapro,monto,descripcion,idfactu";
+            System.out.println("campos proveedor:"+campospro);
+            c.insertar(campospro, tabla, valores2);
         }
+        response.sendRedirect("Contabilidad/AsientosContables.jsp");        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +77,13 @@ public class AgregarAsientoDetalle extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AgregarAsientoDetalle.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AgregarAsientoDetalle.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -72,7 +97,13 @@ public class AgregarAsientoDetalle extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AgregarAsientoDetalle.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AgregarAsientoDetalle.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

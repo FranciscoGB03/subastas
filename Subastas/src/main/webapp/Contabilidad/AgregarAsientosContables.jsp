@@ -1,3 +1,8 @@
+<%@page import="com.sap.contabilidad.clases.Area"%>
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.Calen_Contable"%>
+<%@page import="com.sap.contabilidad.clases.Calen_Contable"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,14 +115,28 @@
                                 <label for="modulo">Selecciona modulo:</label>
                                 <select class="form-control" id="modulo" name="modulo">
                                     <option value="x">Seleccione...</option>
-                                    <option value="compras">Compras</option>
+                                    <%
+                                        LinkedList<Area> l =ConsultasGenerales.opcionesArea();
+                                        for (int i=0;i<l.size();i++)
+                                        {                                                                         
+                                           out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</td>");
+                                           
+                                        }
+                                    %>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="periodo">Selecciona periodo:</label>
                                 <select class="form-control" id="periodo" name="periodo">
                                     <option value="x">Seleccione...</option>
-                                    <option value="2018">2018</option>
+                                     <%
+                                        LinkedList<Calen_Contable> lista =ConsultasGenerales.consultaGeneral();
+                                        for (int i=0;i<lista.size();i++)
+                                        {                                                                         
+                                           out.println("<option value='"+lista.get(i).getId()+"'>"+lista.get(i).getClave()+"</td>");
+                                           
+                                        }
+                                    %>
                                 </select>
                             </div>                            
                             <div class="form-group">
@@ -128,11 +147,11 @@
                                 <label for="concepto">ingrese concepto:</label>
                                 <input type="text" class="form-control" id="concepto" name="concepto" required="required">
                             </div>
-                            <div class="radiobutton">
+                            <!--<div class="radiobutton">
                                 <label for="tipoCuenta">Elija tipo de cuenta:</label>
                                 <input type="radio" name="tipoCuenta" id="tipoCuenta" value="cliente">Cliente
                                 <input type="radio" name="tipoCuenta" id="tipoCuenta" value="proveedor">Proveedor
-                            </div>
+                            </div>-->
                             <button type="reset" class="btn btn-default">Cancelar</button>
                             <button type="submit" class="btn btn-default">Agregar</button>
                         </form>

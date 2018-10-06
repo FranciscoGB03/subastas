@@ -1,3 +1,9 @@
+<%@page import="com.sap.contabilidad.clases.CuentaProveedor"%>
+<%@page import="com.sap.contabilidad.clases.CuentaCliente"%>
+<%@page import="com.sap.contabilidad.clases.Factura"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="com.sap.contabilidad.clases.AsientoGeneral"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,12 +109,51 @@
                     <div class="container">
                        <form role="form" method="post" action="../AgregarAsientoDetalle">
                             <div class="form-group">
-                                <label for="claveAsiento">ingrese clave de asiento general:</label>
-                                <input type="text" class="form-control" id="claveAsiento" name="claveAsiento" required="required">
+                                <label for="claveAsiento">Seleccione clave de asiento general:</label>
+                                <select class="form-control" id="claveAsiento" name="claveAsiento">
+                                    <option value="x">Seleccione...</option>
+                                    <%
+                                        LinkedList<AsientoGeneral> l =ConsultasGenerales.opcionesAsientoGeneral();
+                                        for (int i=0;i<l.size();i++)
+                                        {                                                                         
+                                           out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getClave()+"-"+l.get(i).getIdarea()+"</td>");
+                                           
+                                        }
+                                    %>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="cuenta">ingrese cuenta del cliente o proveedor:</label>
-                                <input type="text" class="form-control" id="cuenta" name="cuenta" required="required">
+                                <label for="tipo">Seleccione el tipo de cuenta:</label>
+                                <input type="radio" id="tipo" name="tipo" onchange="habilitar(this.value);" class="form-group" value="1">Cliente&nbsp;
+                                <input type="radio" id="tipo" name="tipo" onchange="habilitar(this.value);" class="form-group" value="2">Proveedor
+                            </div>
+                            <div class="form-group">
+                                <label for="cuentacli">Seleccione la cuenta del cliente:</label>
+                                <select class="form-control" id="cuentacli" name="cuentacli">
+                                    <option value="x">Seleccione...</option>
+                                    <%
+                                        LinkedList<CuentaCliente> cliente =ConsultasGenerales.cuentaCliente();
+                                        for (int i=0;i<cliente.size();i++)
+                                        {                                                                         
+                                           out.println("<option value='"+cliente.get(i).getId()+"'>"+cliente.get(i).getClave()+"-"+cliente.get(i).getNombre()+"</td>");
+                                           
+                                        }
+                                    %>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cuentapro">Seleccione la cuenta del proveedor:</label>
+                                <select class="form-control" id="cuentapro" name="cuentapro">
+                                    <option value="x">Seleccione...</option>
+                                    <%
+                                        LinkedList<CuentaProveedor> pro =ConsultasGenerales.cuentaProveedor();
+                                        for (int i=0;i<pro.size();i++)
+                                        {                                                                         
+                                           out.println("<option value='"+pro.get(i).getId()+"'>"+pro.get(i).getClave()+"-"+pro.get(i).getNombre()+"</td>");
+                                           
+                                        }
+                                    %>
+                                </select>                                    
                             </div>
                             <div class="form-group">
                                 <label for="monto">ingrese el monto:</label>
@@ -119,8 +164,18 @@
                                 <input type="text" class="form-control" id="descripcion" name="descripcion" required="required">
                             </div>                                                       
                             <div class="form-group">
-                                <label for="idfactura">ingrese numero de factura:</label>
-                                <input type="text" class="form-control" id="idfactura" name="idfactura" required="required">
+                                <label for="idfactura">Seleccione clave de factura:</label>
+                                <select class="form-control" id="idfactura" name="idfactura">
+                                    <option value="x">Seleccione...</option>
+                                    <%
+                                        LinkedList<Factura> lista =ConsultasGenerales.opcionesFactura();
+                                        for (int i=0;i<lista.size();i++)
+                                        {                                                                         
+                                           out.println("<option value='"+lista.get(i).getId()+"'>"+lista.get(i).getClave()+"-"+lista.get(i).getTipo()+"</td>");
+                                           
+                                        }
+                                    %>
+                                </select>
                             </div>
                             <button type="reset" class="btn btn-default">Cancelar</button>
                             <button type="submit" class="btn btn-default">Agregar</button>

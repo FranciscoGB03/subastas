@@ -1,3 +1,6 @@
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="com.sap.contabilidad.clases.AsientoContable"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,16 +106,28 @@
                     <th>Periodo</th>
                     <th>Fecha</th>
                     <th>Concepto</th>
-                    <th>Tipo cuenta</th>
+                    <th>Monto</th>
+                    <th>Clave Factura</th>
+                    <th>Nombre cliente</th>
+                    <th>Nombre Proveedor</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Contabilidad</td>
-                    <td>2018</td>
-                    <td>01/01/2018</td>
-                    <td>Compra de materia prima</td>
-                    <td>Proveedor</td>
-                </tr>
+                <%
+                    LinkedList<AsientoContable> lista =ConsultasGenerales.asientoContable();
+                    for (int i=0;i<lista.size();i++)
+                    {
+                       out.println("<tr>");
+                       out.println("<td>"+lista.get(i).getClaveg()+"</td>");
+                       out.println("<td>"+lista.get(i).getModulo()+"</td>");
+                       out.println("<td>"+lista.get(i).getPeriodo()+"</td>");                           
+                       out.println("<td>"+lista.get(i).getFecha()+"</td>");                                                                  
+                       out.println("<td>"+lista.get(i).getConcepto()+"</td>");                                                                  
+                       out.println("<td>"+lista.get(i).getMonto()+"</td>");                                                                  
+                       out.println("<td>"+lista.get(i).getClavefactu()+"</td>");                                                                  
+                       out.println("<td>"+lista.get(i).getIdcuentacli()+"</td>");                                                                  
+                       out.println("<td>"+lista.get(i).getIdcuentapro()+"</td>");                                                                  
+                       out.println("</tr>");
+                    }
+                %>
 
             </table>               
         </div>

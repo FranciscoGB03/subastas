@@ -174,6 +174,12 @@ public class ConsultasGenerales {
         conn.close();
         return l;
     }
+    /**
+     * metodo para mostrar las cuentas contables de los clientes
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     public static LinkedList cuentaCliente() throws SQLException, ClassNotFoundException {        
         Connection conn;
         Class.forName("org.postgresql.Driver");
@@ -192,6 +198,124 @@ public class ConsultasGenerales {
                 cc.setNombre(rs.getString("nombre"));
                 cc.setCuentaempresa(rs.getString("descripcion"));                
                 l.add(cc);
+            }                    
+        conn.close();
+        return l;
+    }
+    /**
+     * muestra las opciones de areas en un combobox
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
+    public static LinkedList opcionesArea() throws SQLException, ClassNotFoundException {        
+        Connection conn;
+        Class.forName("org.postgresql.Driver");
+        LinkedList <Area> l=new LinkedList<>();
+        Properties connProp = new Properties();
+        connProp.put("user", "postgres");
+        connProp.put("password", "root");
+        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
+        Statement stmt;        
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM area");
+            while (rs.next()) {
+                Area a=new Area();
+                a.setId(rs.getInt("id"));             
+                a.setNombre(rs.getString("nombre"));                
+                l.add(a);
+            }                    
+        conn.close();
+        return l;
+    }
+    /**
+     * muestra las claves de los asientos generales
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
+    public static LinkedList opcionesAsientoGeneral() throws SQLException, ClassNotFoundException {        
+        Connection conn;
+        Class.forName("org.postgresql.Driver");
+        LinkedList <AsientoGeneral> l=new LinkedList<>();
+        Properties connProp = new Properties();
+        connProp.put("user", "postgres");
+        connProp.put("password", "root");
+        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
+        Statement stmt;        
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT ag.id,ag.clave,ar.nombre,ag.idperiodo,ag.fecha,ag.concepto FROM asientogeneral as ag,area as ar where ag.idarea=ar.id;");
+            while (rs.next()) {
+                AsientoGeneral ag=new AsientoGeneral();
+                ag.setId(rs.getInt("id"));             
+                ag.setClave(rs.getString("clave"));                
+                ag.setIdarea(rs.getString("nombre"));
+                ag.setPeriodo(rs.getInt("idperiodo"));
+                ag.setFecha(rs.getString("fecha"));
+                ag.setConcepto(rs.getString("concepto"));
+                l.add(ag);
+            }                    
+        conn.close();
+        return l;
+    }
+    /**
+     * muestra los numeros de las facturas hechas
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
+    public static LinkedList opcionesFactura() throws SQLException, ClassNotFoundException {        
+        Connection conn;
+        Class.forName("org.postgresql.Driver");
+        LinkedList <Factura> l=new LinkedList<>();
+        Properties connProp = new Properties();
+        connProp.put("user", "postgres");
+        connProp.put("password", "root");
+        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
+        Statement stmt;        
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM factura");
+            while (rs.next()) {
+                Factura f=new Factura();
+                f.setId(rs.getInt("id"));             
+                f.setClave(rs.getString("clave"));
+                f.setFecha(rs.getString("fecha"));
+                f.setTipo(rs.getString("tipo"));
+                f.setNombrecli(rs.getString("nombrecli"));
+                f.setNombrepro(rs.getString("nombrepro"));
+                f.setTotal(rs.getDouble("total"));
+                l.add(f);
+            }                    
+        conn.close();
+        return l;
+    }
+    public static LinkedList asientoContable() throws SQLException, ClassNotFoundException {        
+        Connection conn;
+        Class.forName("org.postgresql.Driver");
+        LinkedList <AsientoContable> l=new LinkedList<AsientoContable>();
+        Properties connProp = new Properties();
+        connProp.put("user", "postgres");
+        connProp.put("password", "root");
+        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
+        Statement stmt;        
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("select ag.id,ag.clave as asientog,ar.nombre as modulo,cal.clave as periodo,ag.fecha,ag.concepto,ad.monto,f.clave as factu,f.nombrecli,f.nombrepro from asientogeneral as ag,area as ar,\n" +
+        "calen_contable as cal,\n" +
+        "asientodetalle as ad,\n" +
+        "factura as f\n" +
+        "where ag.idarea=ar.id and ag.idperiodo=cal.id and ag.id=ad.idasientog and ad.idfactu=f.id;");
+            while (rs.next()) {
+                AsientoContable ac=new AsientoContable();
+                ac.setClaveg(rs.getString("asientog"));             
+                ac.setModulo(rs.getString("modulo"));
+                ac.setPeriodo(rs.getString("periodo"));
+                ac.setFecha(rs.getString("fecha"));
+                ac.setConcepto(rs.getString("concepto"));
+                ac.setMonto(rs.getDouble("monto"));
+                ac.setClavefactu(rs.getString("factu"));
+                ac.setIdcuentacli(rs.getString("nombrecli"));
+                ac.setIdcuentapro(rs.getString("nombrepro"));
+                l.add(ac);
             }                    
         conn.close();
         return l;
