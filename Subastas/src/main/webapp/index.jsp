@@ -17,6 +17,7 @@
     <link href="Recursos/css/contabilidad.css" rel="stylesheet" type="text/css"/>
     <!--Validacion de campos-->
     <script src="Recursos/js/Contabilidad.js" type="text/javascript"></script>
+    <link href="Recursos/css/estilos.css" rel="stylesheet" type="text/css"/>
     <!-- Bootstrap -->
     <link href="Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
@@ -31,7 +32,7 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <h2>Please Login</h2>
+                    <h2 class="text-center">Bienvenido a SAPito v2.0</h2>
                     <hr>
                 </div>
             </div>
@@ -43,7 +44,7 @@
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
                             <input type="text" name="user" class="form-control" id="user"
-                                   placeholder="user" required autofocus/>
+                                   placeholder="ingrese usuario" required autofocus/>
                         </div>
                     </div>
                 </div>                
@@ -70,9 +71,12 @@
             </div>
             
             <div class="row" style="padding-top: 1rem">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-sign-in"></i> Login</button>                    
+                <div class="col-1 col-md-4"></div>
+                <div class="col-2 col-md-3">
+                    <button type="reset" class="btn btn-default botones"><i class="fa fa-sign-in"></i> Cancelar</button>                    
+                </div>
+                <div class="col-3 col-md-3">
+                    <button type="submit" class="btn btn-default botones"><i class="fa fa-sign-in"></i> Login</button>                    
                 </div>
             </div>
         </form>

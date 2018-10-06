@@ -66,7 +66,7 @@
         </div>
         <!--Columna Central-->
         <div class="col-xs-6 col-md-6 central table-responsive">   
-            <h1>¡Bienvenido al M&oacute;dulo de Contabilidad!</h1>          
+            <h1 class="text-center">¡Bienvenido al M&oacute;dulo de Contabilidad!</h1>          
         </div>
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">
