@@ -1,3 +1,7 @@
+<%@page import="com.sap.contabilidad.clases.Cliente"%>
+<%@page import="com.sap.contabilidad.clases.ConsultasGenerales"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.sap.contabilidad.clases.CuentaEmpresa"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,12 +86,12 @@
                 <table class="tabla">
                 	<tr>
                     	<td>
-                    		<a href="AgregarCuentaCliente.jsp">Agregar Cuenta Contable</a>
+                    		<a href="AgregarCuentaCliente.jsp">Agregar Cuenta Cliente</a>
                         </td>
                     </tr>
                 	<tr>
                     	<td>
-                    		<a href="EliminarCuentaCliente.jsp">Eliminar Cuenta Contable</a>
+                    		<a href="EliminarCuentaCliente.jsp">Eliminar Cuenta Cliente</a>
                         </td>
                     </tr>
                 </table>
@@ -96,25 +100,36 @@
         </div>
         <!--Columna Central-->
         <div class="col-xs-6 col-md-6 central table-responsive jumbotron">   
-                    <h1 class="titulo">Agregar Cuenta Contable</h1>
-                    <h4 class="titulo">Eliga alguna opci&oacute;n para agregarla</h4>
+                    <h1 class="titulo">Agregar Cuenta Cliente</h1>                    
                     <form role="form" method="post" action="../AgregarCuentaCliente">
                         <div class="form-group">
                           <label for="claveCuenta">Ingrese una clave:</label>
-                          <input type="text" class="form-control" id="claveCuenta" required="required">
+                          <input type="text" class="form-control" id="claveCuenta" name="claveCuenta" required="required">
                         </div>
                         <div class="form-group">
                           <label for="tipoCuenta">TipoCuenta:</label>
-                          <Select  class="form-control" id="tipoCuenta" required="required">
+                          <Select  class="form-control" id="tipoCuenta" name="tipoCuenta" required="required">
                               <option value="x">Seleccione...</option>
-                              <option value="100">Activo</option>
+                              <%
+                                LinkedList<CuentaEmpresa> lista =ConsultasGenerales.cuentaempresa();
+                                for (int i=0;i<lista.size();i++)
+                                {
+                                   out.println("<option value='"+lista.get(i).getId()+"'>"+lista.get(i).getDescripcion()+"</option>");                                   
+                                }
+                              %>  
                           </select>
                         </div>
                         <div class="form-group">
                           <label for="cliente">Seleccione cliente:</label>
-                          <Select  class="form-control" id="cliente" required="required">
+                          <Select  class="form-control" id="cliente" name="cliente" required="required">
                               <option value="x">Seleccione...</option>
-                              <option value="juanito">Juanito</option>
+                            <%
+                                LinkedList<Cliente> l =ConsultasGenerales.opcionesCliente();
+                                for (int i=0;i<l.size();i++)
+                                {                                   
+                                   out.println("<option value='"+l.get(i).getId()+"'>"+l.get(i).getNombre()+"</option>");                                   
+                                }
+                            %> 
                           </select>
                         </div>
                         <button type="reset" class="btn btn-default">Cancelar</button>

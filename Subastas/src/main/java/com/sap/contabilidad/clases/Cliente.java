@@ -9,8 +9,8 @@ package com.sap.contabilidad.clases;
  *
  * @author fgb
  */
-public class Proveedor {
-    int id;
+public class Cliente {
+int id;
     String nombre;
     String ape_pat;
     String ape_mat;
@@ -23,14 +23,6 @@ public class Proveedor {
     String cuentabanco;
     String razon;
 
-    public String getRazon() {
-        return razon;
-    }
-
-    public void setRazon(String razon) {
-        this.razon = razon;
-    }
- 
     public int getId() {
         return id;
     }
@@ -117,6 +109,14 @@ public class Proveedor {
 
     public void setCuentabanco(String cuentabanco) {
         this.cuentabanco = cuentabanco;
+    }
+
+    public String getRazon() {
+        return razon;
+    }
+
+    public void setRazon(String razon) {
+        this.razon = razon;
     }
     
 }

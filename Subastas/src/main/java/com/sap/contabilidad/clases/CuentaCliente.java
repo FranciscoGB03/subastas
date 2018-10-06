@@ -9,11 +9,11 @@ package com.sap.contabilidad.clases;
  *
  * @author fgb
  */
-public class CuentaProveedor {
+public class CuentaCliente {
     int id;
     String clave;
     String nombre;
-    String cuentaempresa;                    
+    String cuentaempresa;  
 
     public int getId() {
         return id;

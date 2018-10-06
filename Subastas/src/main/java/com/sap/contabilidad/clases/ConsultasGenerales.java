@@ -94,6 +94,12 @@ public class ConsultasGenerales {
         conn.close();
         return l;
     }
+    /**
+     * clase para mostrar como opciones en un combobox
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     public static LinkedList opcionesProveedor() throws SQLException, ClassNotFoundException {        
         Connection conn;
         Class.forName("org.postgresql.Driver");
@@ -136,10 +142,58 @@ public class ConsultasGenerales {
                 cp.setId(rs.getInt("id"));             
                 cp.setClave(rs.getString("clave"));
                 cp.setNombre(rs.getString("nombre"));
-                cp.setCuentaempresa(rs.getInt("idcuentaempresa"));                
+                cp.setCuentaempresa(rs.getString("descripcion"));                
                 l.add(cp);
             }                    
         conn.close();
         return l;
-    }        
+    }
+    /**
+     * opciones para mostar en un combobox
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
+    public static LinkedList opcionesCliente() throws SQLException, ClassNotFoundException {        
+        Connection conn;
+        Class.forName("org.postgresql.Driver");
+        LinkedList <Cliente> l=new LinkedList<>();
+        Properties connProp = new Properties();
+        connProp.put("user", "postgres");
+        connProp.put("password", "root");
+        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
+        Statement stmt;        
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT id, nombre FROM cliente");
+            while (rs.next()) {
+                Cliente p=new Cliente();
+                p.setId(rs.getInt("id"));             
+                p.setNombre(rs.getString("nombre"));                
+                l.add(p);
+            }                    
+        conn.close();
+        return l;
+    }
+    public static LinkedList cuentaCliente() throws SQLException, ClassNotFoundException {        
+        Connection conn;
+        Class.forName("org.postgresql.Driver");
+        LinkedList <CuentaCliente> l=new LinkedList<CuentaCliente>();
+        Properties connProp = new Properties();
+        connProp.put("user", "postgres");
+        connProp.put("password", "root");
+        conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
+        Statement stmt;        
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT cc.id,cc.clave,cc.idcuentaempresa,ce.descripcion, c.nombre FROM cuentaempresa as ce,cuentacliente as cc, cliente as c where cc.idcliente=c.id and cc.idcuentaempresa=ce.id;");
+            while (rs.next()) {
+                CuentaCliente cc=new CuentaCliente();
+                cc.setId(rs.getInt("id"));             
+                cc.setClave(rs.getString("clave"));
+                cc.setNombre(rs.getString("nombre"));
+                cc.setCuentaempresa(rs.getString("descripcion"));                
+                l.add(cc);
+            }                    
+        conn.close();
+        return l;
+    }
 }

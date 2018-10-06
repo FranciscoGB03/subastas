@@ -7,6 +7,7 @@ package com.sap.contabilidad.servlets;
 
 import com.sap.conexion.Conexion;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author fgb
  */
-@WebServlet(name = "AgregarCuentaProveedor", urlPatterns = {"/AgregarCuentaProveedor"})
-public class AgregarCuentaProveedor extends HttpServlet {
+@WebServlet(name = "EliminarCuentaCliente", urlPatterns = {"/EliminarCuentaCliente"})
+public class EliminarCuentaCliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,18 +34,14 @@ public class AgregarCuentaProveedor extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException{
-            response.setContentType("text/html;charset=UTF-8");        
-            Conexion c=new Conexion();            
-            String clave=request.getParameter("clavec");
-            System.out.println("clave"+clave);
-            String tipocuenta=request.getParameter("tipoCuenta");
-            String proveedor=request.getParameter("proveedor");
-            String valores="'"+clave+"',"+tipocuenta+","+proveedor;
-            System.out.println("valores:"+valores);
-            String campos="clave,idcuentaempresa,idproveedor";            
-            c.insertar(campos, "cuentaproveedor",valores);
-            response.sendRedirect("Contabilidad/CuentasProveedor.jsp");        
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
+        Conexion c=new Conexion();
+        String clave=request.getParameter("codigocli");
+        String referencia="id="+clave;
+        System.out.println("referencia:"+referencia);
+        c.borrar("cuentacliente", referencia);
+        response.sendRedirect("Contabilidad/CuentasCliente.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,8 +58,10 @@ public class AgregarCuentaProveedor extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AgregarCuentaProveedor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EliminarCuentaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EliminarCuentaCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -79,8 +78,10 @@ public class AgregarCuentaProveedor extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AgregarCuentaProveedor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EliminarCuentaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EliminarCuentaCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

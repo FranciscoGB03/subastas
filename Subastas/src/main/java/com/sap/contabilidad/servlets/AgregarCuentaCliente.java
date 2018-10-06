@@ -5,8 +5,12 @@
  */
 package com.sap.contabilidad.servlets;
 
+import com.sap.conexion.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,20 +34,19 @@ public class AgregarCuentaCliente extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AgregarCuentaCliente</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AgregarCuentaCliente at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        Conexion c=new Conexion();
+        String clave=request.getParameter("claveCuenta");
+        System.out.println("clave"+clave);
+        String tipocuenta=request.getParameter("tipoCuenta");
+        String proveedor=request.getParameter("cliente");
+        String valores="'"+clave+"',"+tipocuenta+","+proveedor;
+        System.out.println("valores:"+valores);
+        String campos="clave,idcuentaempresa,idcliente";            
+        c.insertar(campos, "cuentacliente",valores);
+        response.sendRedirect("Contabilidad/CuentasCliente.jsp");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +61,13 @@ public class AgregarCuentaCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AgregarCuentaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AgregarCuentaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -72,7 +81,13 @@ public class AgregarCuentaCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AgregarCuentaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AgregarCuentaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
