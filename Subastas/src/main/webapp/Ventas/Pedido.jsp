@@ -43,10 +43,14 @@
                             <a class="nav-link text-white" href="Factura.jsp">&nbsp;Factura</a>
                         </div>
                     </li> 
-                    <li class="nav-item">
-                        <a href="Estadisticas.jsp" class="nav-link text-white">Estadisticas</a>
-                    </li>  
-                                       
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Otro</a>
+                        <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
+                            <a class="nav-link text-white" href="Devolucion.jsp">&nbsp;Devolucion</a>
+                        </div>
+                    </li> 
+                     
+                              
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
@@ -54,46 +58,42 @@
             </div>
         </nav>
     </header>
-    <center>
-<form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <label for="Codigo">Cliente:</label>
-    
-    <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre">
-</form>
-   <br>
-    <form>
-        <label for="Codigo">Numero:</label>
-        <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre">
-    </form>
-   <br>
-    <form>
-        <label for="Codigo">Fecha:</label>
-        <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre">
-    </form>
-   <br>
-    <form>
-        <label for="Codigo">Codigo:</label>
-    <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre"></form>
-    <br>
-    <form>
-        <label for="Codigo">Vendedor:</label>
-    <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre"></form>
-    <br>
-    <form>
-        <label for="Codigo">Moneda:</label>
-        <input type="text" placeholder="Escribe aqui" maxlength="30" name="nombre" id="nombre"></form>
-    
-    
-    <br>
-    
-    <left>
-    <input type="submit" value="Actualizar">
-    <input type="submit" value="Salir">
-    </left>
-    </center>
+    <section class="container">
+    <h1 class="text-uppercase text-center">Pedido</h1>
+        <div class="row">
+        <div class="col-6">
+            <form action="" >
+            <div class="form-group row">
+                <label for="" class="col-3 col-form-label">Id_Cliente:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-3 col-form-label">Id_Producto:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-3 col-form-label">Fecha:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                 <div class="form-group row">
+                <label for="" class="col-3 col-form-label">Codigo:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-3 col-form-label">Descripcion:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+               
+                
+            <div class="form-group mx-2">
+                <button class="btn btn-danger" type="submit">Pedir Ahora</button>
+                </div>
+                <div class="form-group mx-2">
+                <button class="btn btn-danger" type="submit">Cancelar</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </section>
     </body>
 </html>
