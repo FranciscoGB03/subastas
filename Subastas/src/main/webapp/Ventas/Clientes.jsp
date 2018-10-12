@@ -43,10 +43,14 @@
                             <a class="nav-link text-white" href="Factura.jsp">&nbsp;Factura</a>
                         </div>
                     </li> 
-                    <li class="nav-item">
-                        <a href="Estadisticas.jsp" class="nav-link text-white">Estadisticas</a>
-                    </li>  
-                                       
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Otro</a>
+                        <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
+                            <a class="nav-link text-white" href="Devolucion.jsp">&nbsp;Devolucion</a>
+                        </div>
+                    </li> 
+                     
+                              
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
@@ -54,43 +58,74 @@
             </div>
         </nav>
     </header>
-    <center>
-<form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <label for="Codigo">Codigo:</label>
     
-    <input type="text" placeholder="Escribe tu codigo" maxlength="30"ame="nombre" id="nombre">
-   
-    <label for="Codigo">Razon Social:</label>
-    <input type="text" placeholder="Escribe tu razon" maxlength="30"ame="nombre" id="nombre"></form>
-   <br>
-    <form>
-    <label for="Codigo">Direccion:</label>
-    <input type="text" placeholder="Escribe tu direccion" maxlength="30"ame="nombre" id="nombre">
-   
-    <label for="Codigo">Ubicacion:</label>
-    <input type="text" placeholder="Escribe tu ubicacion" maxlength="30"ame="nombre" id="nombre"></form>
-    <br>
-    <form>
-    <label for="Codigo">Telefono:</label>
-    <input type="text" placeholder="Escribe tu telefono" maxlength="30"ame="nombre" id="nombre">
+    <section class="container">
+    <h1 class="text-uppercase text-center">Clientes</h1>
+        <div class="row">
+        <div class="col-6">
+            <form action="" >
+            <div class="form-group row">
+                <label for="" class="col-2 col-form-label">Nombre:</label>
+                <input type="text" placeholder="Escribe tu nombre aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-2 col-form-label">Apellido Paterno:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-2 col-form-label">Apellido Materno:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                 <div class="form-group row">
+                <label for="" class="col-2 col-form-label">Direccion:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-2 col-form-label">CP:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-2 col-form-label">Municipio:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-2 col-form-label">Estado:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-2 col-form-label">Pais:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-2 col-form-label">RFC:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-2 col-form-label">Cuenta Contable:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-2 col-form-label">Cuenta Bancaria:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                <div class="form-group row">
+                <label for="" class="col-2 col-form-label">Razon:</label>
+                <input type="text" placeholder="Escribe aqui" class="form-control col-5">
+                </div>
+                
+            <div class="form-group mx-2">
+                <button class="btn btn-danger" type="submit">Registrar</button>
+                </div>
+                <div class="form-group mx-2">
+                <button class="btn btn-danger" type="submit">Cancelar</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </section>
     
-    <label for="Codigo">Fax:</label>
-        <input type="text" placeholder="Escribe tu fax" maxlength="30"ame="nombre" id="nombre"></form>
-    <br>
-    <form>
-    <label for="Codigo">E-mail:</label>
-    <input type="text" placeholder="Escribe tu e-mail" maxlength="30"ame="nombre" id="nombre"></form>
     
-    <br>
     
-    <left>
-    <input type="submit" value="Guardar">
-    <input type="submit" value="Salir">
-    </left>
-    </center>
+    
     </body>
 </html>
