@@ -43,10 +43,14 @@
                             <a class="nav-link text-white" href="Factura.jsp">&nbsp;Factura</a>
                         </div>
                     </li> 
-                    <li class="nav-item">
-                        <a href="Estadisticas.jsp" class="nav-link text-white">Estadisticas</a>
-                    </li>  
-                                       
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Otro</a>
+                        <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
+                            <a class="nav-link text-white" href="Devolucion.jsp">&nbsp;Devolucion</a>
+                        </div>
+                    </li> 
+                     
+                              
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
