@@ -6,6 +6,7 @@
 package com.sap.contabilidad.servlets;
 
 import com.sap.conexion.Conexion;
+import com.sap.gerencia.clases.usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -16,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,10 +39,17 @@ public class EliminarCuentaProveedor extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         Conexion c=new Conexion();
+        
         String clave=request.getParameter("codigoprov");
         String referencia="id="+clave;
         System.out.println("referencia:"+referencia);
         c.borrar("cuentaproveedor", referencia);
+        
+        HttpSession sesion=(HttpSession) request.getSession();
+        int usu=Integer.valueOf(sesion.getAttribute("usuario").toString());
+        int i = c.insercionRegistro(usu,  "contabilidad", "Elimino cuenta proveedor");
+        
+        
         response.sendRedirect("Contabilidad/CuentasProveedor.jsp");
     }
 

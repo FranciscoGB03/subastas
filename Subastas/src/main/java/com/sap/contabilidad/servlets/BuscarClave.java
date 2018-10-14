@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,9 +39,13 @@ public class BuscarClave extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         String cadena=request.getParameter("clavep");        
-        Conexion c=new Conexion();
+        Conexion c=new Conexion();        
+        HttpSession sesion=(HttpSession) request.getSession();
+        int usu=Integer.valueOf(sesion.getAttribute("usuario").toString());
         String campos="clave,periodo,fechaini,fechafin,estatus";
         ArrayList l=c.consultaVariosCamposUnaClave(cadena, campos,"calen_contable", 5);
+        int i = c.insercionRegistro(usu ,"contabilidad", "Consulta clave");
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */                  
             out.println("<h1 class='text-center'> Consulta Realizada</h1>");         
@@ -77,9 +82,7 @@ public class BuscarClave extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(BuscarClave.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(BuscarClave.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -103,9 +106,7 @@ public class BuscarClave extends HttpServlet {
 //            /* TODO output your page here. You may use following sample code. */
 //            out.println("<h1>Servlet AgregarAsientoDetalle at " + cadena + "</h1>");         
 //        }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(BuscarClave.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(BuscarClave.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

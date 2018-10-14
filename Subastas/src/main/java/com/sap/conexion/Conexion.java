@@ -165,4 +165,30 @@ public class Conexion {
         closeDB();
         return rs;
     }
+    
+    //log
+    public int insercionRegistro(int id, String area, String des) throws SQLException{
+        openDB();
+        int valor=1;
+        PreparedStatement ps;
+        ps=conn.prepareStatement("INSERT INTO log(id_emp,area,des) VALUES ("+id+",'"+area+"','"+des+"');");
+        valor= ps.executeUpdate();
+        closeDB();        
+        return valor;
+    }
+    
+     public ArrayList consulta(String campos, String tabla, String referencia, String condicion, String extra, int cantidad) throws SQLException {
+        openDB();
+        if(condicion.equals("")){condicion="is not null";}
+        ArrayList r=new ArrayList();
+        PreparedStatement ps;
+        ps=conn.prepareStatement("SELECT "+campos+" FROM "+tabla+" WHERE "+referencia+" "+condicion+" "+extra);
+        ResultSet rs= ps.executeQuery();
+        while(rs.next()){
+            for(int i = 1 ; i <= cantidad ; i++){r.add(rs.getObject(i));}
+        }
+        closeDB();        
+        return r;
+    }
+    
 }

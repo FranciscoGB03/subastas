@@ -4,7 +4,19 @@
     Author     : fgb
 --%>
 
+<%-- 
+    Document   : index
+    Created on : 2/10/2018, 11:54:42 PM
+    Author     : fgb
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    if (session != null) {  
+                    session.invalidate();                    
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +27,6 @@
     <title>Subastas</title>
     <!--Enlace a estilos personalizados de COntabilidad-->
     <link href="Recursos/css/contabilidad.css" rel="stylesheet" type="text/css"/>
-    <!--Validacion de campos-->
-    <script src="Recursos/js/Contabilidad.js" type="text/javascript"></script>
-    <link href="Recursos/css/estilos.css" rel="stylesheet" type="text/css"/>
     <!-- Bootstrap -->
     <link href="Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
@@ -25,6 +34,9 @@
     <!-- Include all compiled plugins (below), or include individual files as needed --> 
     <script src="Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>            
+    <!--Validacion de campos-->
+    <script src="Recursos/js/Contabilidad.js" type="text/javascript"></script>
+    <link href="Recursos/css/estilos.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
         <div class="container">
