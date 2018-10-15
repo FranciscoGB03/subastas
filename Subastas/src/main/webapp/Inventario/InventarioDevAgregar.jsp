@@ -9,14 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-             <title>Inventario Agregar Devolucion</title>
-<!-- Bootstrap -->
-<link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+        <title>Inventario Agregar Devolucion</title>
+        <!-- Bootstrap -->
+        <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+        <script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed --> 
+        <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
     </head>
     <body>
         <header class="sticky-top">
