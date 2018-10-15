@@ -1,57 +1,74 @@
 <%-- 
     Document   : Compras
     Created on : 25/09/2018, 07:40:03 PM
-    Author     : Marifer
+    Author     : Marifer y Erick
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Bootstrap -->
-        <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-        <script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed --> 
-        <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
-        <link href="../Recursos/css/estilos.css" rel="stylesheet" type="text/css"/>
+       <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+        <link href="../CSS/estilos.css" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="../JS/validaciones.js"></script>
+   
+        <link href="../Recursos/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+        <script src="../Recursos/bootstrap/librerias/jquery-3.3.1.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed --> 
+        <script src="../Recursos/bootstrap/js/bootstrap.js"></script>
+        
+       
         <title>Compras</title>
         
     </head>
     
     <body>
         
-      <header class="sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-            <a href="Compras.jsp" class="navbar-brand text-white">Compras</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#compras_navbar" aria-controls="compras_navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <header class="sticky-top">
+            
+            <nav class="navbar navbar-expand-lg navbar-light barra">
+                <div>
+                    <a class="navbar-brand" style="color: white" >Compras</a> 
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#compras_navbar" aria-controls="compras_navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="compras_navbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="Compras.jsp" class="nav-link text-white">Proovedores</a>
-                    </li>                                                
-                    <li class="nav-item">
-                        <a href="Productos.jsp" class="nav-link text-white">Productos</a>
-                    </li>                                                
-                    <li class="nav-item">
-                        <a href="List_com.jsp" class="nav-link text-white">Lista&nbsp;de&nbsp;Compras</a>
-                    </li>                     
-                </ul>   
-               <form class="form-inline my-2 my-lg-0" action="../CerrarSesion">                
-                    <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
-                </form>
-            </div>
-        </nav>
-    </header>
-    <br><br>    
-    <!--fin de barra navegadora-->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Compras.jsp" style="color: white">Proveedores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Productos.jsp" style="color: white">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="OrdenCompra.jsp" style="color: white">Orden&nbsp;de&nbsp;compra</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="List_com.jsp" style="color: white">Lista&nbsp;de&nbsp;Compras</a>
+                        </li>                        
+                    </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="" style="color: white">Salir</a>
+                        </li>                                              
+                    </ul>
+                    </div> 
+                </div>
+            </nav>           
+
+        </header>
+        
         <div id="principal">
             <div class="container-fluid">
-                 
+                 <div class="row">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
                 <div class="row">
                     <div style="background-color:#F5F5F5;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-style-5"> <!-- Seccion izquierda -->
                         <form method="POST" >
@@ -68,10 +85,10 @@
                            <div class="radio">
                             <label>
                                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                    Por&nbsp;RFC
+                                    Por&nbsp;Clave
                             </label>
                            </div><br>
-                           <center><input type="text" name="rfcprov" placeholder="RFC" id="codprod" required></center>
+                           <center><input type="text" name="rfcprov" placeholder="Clave" class="form-control" id="codprod" required></center>
                             <div>
                                 <br>
                             </div>
@@ -92,50 +109,70 @@
                             <center><input type="submit" value="Eliminar"  name="eliminar" class="btn btn-success"></center>      
                         </form>
                         <br>
+                        <form method="POST" action="Edit_prod.jsp" >                                
+                            <center><input type="submit" value="Editar"  name="editar" class="btn btn-success"></center>      
+                        </form>
+                        <br>
                     </div>   
                     
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><!-- Seccion central --> 
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12"><!-- Seccion central --> 
                         
                             <center><div>
                                     <h3>Proveedores</h3>
                             </div></center>
                          <div class="table-responsive"><table class="table table-bordered">
                                     <thead>
-                                        <tr class="active">
-                                            <th scope="col">RFC</th>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Dirección</th>
-                                            <th scope="col">Correo</th>
-                                            <th scope="col">Teléfono</th>
-                                        </tr>
-                                    </thead>                                    
-                                    <tbody>                                       
-                                        <tr id="modalInter">
-                                        <td scope="col">FGJK090719HTD</td>
-                                            <td scope="col">José Perez</td>
-                                            <td scope="col">Col. Hidalgo</td>
-                                            <td scope="col">pjose23@gmail.com</td>
-                                            <td scope="col">456901234</td>
-                                        </tr>  
-                                        <tr id="modalInter">
-                                        <td scope="col">FGJK090719HTD</td>
-                                            <td scope="col">José Perez</td>
-                                            <td scope="col">Col. Hidalgo</td>
-                                            <td scope="col">pjose23@gmail.com</td>
-                                            <td scope="col">456901234</td>
-                                        </tr> 
-                                        <tr id="modalInter">
-                                        <td scope="col">FGJK090719HTD</td>
-                                            <td scope="col">José Perez</td>
-                                            <td scope="col">Col. Hidalgo</td>
-                                            <td scope="col">pjose23@gmail.com</td>
-                                            <td scope="col">456901234</td>
-                                        </tr> 
-                                    </tbody>
+    <tr class="active">
+        <th scope="col"><center>Clave</center></th>
+      <th scope="col"><center>Razon social</center></th>
+      <th scope="col"><center>RFC</center></th>      
+       <th scope="col"><center>Direccion</center></th>
+       <th scope="col"><center>Telefono</center></th>
+       <th scope="col"><center>Correo</center></th>
+       <th scope="col"><center>Cuenta contable</center></th>
+       <th scope="col"><center>Credito</center></th>
+       <th scope="col"><center>Días Crédito</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="modalInter">
+      <th scope="row">1</th>
+      <td>Dogger tools</td>
+     <td>FGDHSDJH78634CR0LR</td>    
+     <td>col. margaritas </td>
+     <td>7223456712</td>
+     <td>doggertools@gmsil.com</td>
+     <td>10.11</td>
+     <td>$50,000</td>
+     <td>12</td>
+    </tr>
+    <tr id="modalInter">
+      <th scope="row">2</th>
+       <td>Ronal mexicana</td>
+        <td>FGDHSDJH78634CRLR</td>       
+          <td>col. margaritas</td>
+     <td>7223456712</td>
+     <td>Ronalmexicana@hotmail.com</td>
+      <td>10.11</td>
+      <td>$50,000</td>
+      <td>30</td>
+    </tr>
+    <tr id="modalInter">
+      <th scope="row">3</th>
+       <td>Norkcon tools </td>
+        <td>FGDHSDJH78634CRLR</td>
+          <td>col. margaritas</td>
+           <td>7223456712</td>
+           <td>norkcontools@gmail.com</td>
+            <td>10.11</td>
+             <td>$50,000</td>
+            <td>20</td>
+    </tr>
+  </tbody>
                                 </table></div>
                         <br>
                         
-                           <div>
+                           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                     <h5>Solo mostrar:</h5>
                             <div class="checkbox">
                             <label>
@@ -146,7 +183,7 @@
                            <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
-                                    Nombre
+                                   Razón Social
                             </label>
                            </div>
                            <div class="checkbox">
@@ -166,9 +203,27 @@
                                 <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
                                    Teléfono
                             </label>
-                           </div><br> 
+                               </div>
+                            <div class="checkbox">
+                               <label>
+                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+                                   Crédito
+                            </label>
+                           </div>
+                             <div class="checkbox">
+                               <label>
+                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+                                   Cuenta contable
+                            </label>
+                           </div>
+                             <div class="checkbox">
+                               <label>
+                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+                                   Días Crédito
+                            </label>
+                           </div> 
 
-                                    <div><center><input type="submit" value="Filtrar" style="background-color:#3366FF" name="filtro" class="btn btn-primary"></center></div>
+               <center><input type="submit" value="Filtrar" style="background-color:#3366FF" name="filtro" class="btn btn-primary" onsubmit="return compras();"></center>
                             </div>
                     </div>
                 </div>
