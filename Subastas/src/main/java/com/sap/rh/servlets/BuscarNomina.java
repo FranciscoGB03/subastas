@@ -2,6 +2,7 @@ package com.sap.rh.servlets;
 
 
 import com.sap.conexion.Conexion;
+import com.sap.gerencia.clases.usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,6 +37,8 @@ public class BuscarNomina extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String nomina = request.getParameter("buscarIdNomina");
         Conexion c = new Conexion();
+        HttpSession sesion=(HttpSession) request.getSession();
+        int usu=Integer.valueOf(sesion.getAttribute("usuario").toString());
         ArrayList lista;
         if(!nomina.isEmpty()){
             lista = c.consulta("id,empleado,cantidad,estado,origen_recurso,regimen,periodicidad,tipo,percepcion,situacion",
@@ -43,6 +47,9 @@ public class BuscarNomina extends HttpServlet {
             lista = c.consulta("id,empleado,cantidad,estado,origen_recurso,regimen,periodicidad,tipo,percepcion,situacion",
                     "nomina", "id is not null", 10);
         }
+        
+        int i = c.insercionRegistro(usu,  "rh", "Busqueda de nomina");
+        
         request.getSession().setAttribute("nomina", lista);
         response.sendRedirect("RH/BuscarResultado.jsp");
     }

@@ -1,6 +1,7 @@
 package com.sap.rh.servlets;
 
 import com.sap.conexion.Conexion;
+import com.sap.gerencia.clases.usuario;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -47,10 +49,15 @@ public class ContratarEmpleado extends HttpServlet {
         String nac = request.getParameter("nacContratarEmp");
         String cuenta = request.getParameter("cuentaContratarEmp");
         Conexion c = new Conexion();
+        HttpSession sesion=(HttpSession) request.getSession();
+        int usu=Integer.valueOf(sesion.getAttribute("usuario").toString());
         c.insertar("nombre,primer_apellido,segundo_apellido,nacionalidad,curp,rfc,edad,lugar_nacimiento,direccion,telefono,area,"
                 + "puesto,horario,actividad,sueldo,cuenta,status,contrasena", "empleado",
                 "'"+nombre+"','"+paterno+"','"+materno+"','"+nac+"','"+curp+"','"+rfc+"',"+edad+",'"+lugar+"','"+dir+"','"+tel+"',"+area
                         +","+puesto+",'"+horario+"','"+activ+"',"+sueldo+",'"+cuenta+"','Activo','sap123'");
+        
+        int i = c.insercionRegistro(usu,  "rh", "Contratacion de empleado empleado");
+        
         response.sendRedirect("RH/ContratarEmpleado.jsp");
     }
 

@@ -1,6 +1,7 @@
 package com.sap.rh.servlets;
 
 import com.sap.conexion.Conexion;
+import com.sap.gerencia.clases.usuario;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,6 +36,8 @@ public class BuscarEmpleado extends HttpServlet {
         String empleado = request.getParameter("buscarIdEmpleado");
         String area = request.getParameter("buscarAreaEmpleado");
         Conexion c = new Conexion();
+        HttpSession sesion=(HttpSession) request.getSession();
+        int usu=Integer.valueOf(sesion.getAttribute("usuario").toString());
         ArrayList lista;
         if(!area.isEmpty() && !empleado.isEmpty()){
             lista = c.consulta("id,nombre,primer_apellido,segundo_apellido,nacionalidad,curp,rfc,edad,lugar_nacimiento,direccion,telefono,"
@@ -52,6 +56,9 @@ public class BuscarEmpleado extends HttpServlet {
                 }
             }
         }
+        
+        int i = c.insercionRegistro(usu,  "rh", "Busqueda de empleado");
+        
         request.getSession().setAttribute("empleados", lista);
         response.sendRedirect("RH/BuscarResultado.jsp");
     }

@@ -1,6 +1,7 @@
 package com.sap.rh.servlets;
 
 import com.sap.conexion.Conexion;
+import com.sap.gerencia.clases.usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,11 +37,15 @@ public class EliminarNomina extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String nomina = request.getParameter("eliminarIdNomina");
             Conexion c = new Conexion();
+            HttpSession sesion=(HttpSession) request.getSession();
+        int usu=Integer.valueOf(sesion.getAttribute("usuario").toString());
             ArrayList lista =  c.consulta("id", "nomina", "id = " + nomina, 1);
             if(!lista.isEmpty()){
                 c.actualizar("situacion = 3", "nomina", "id = " + nomina);
+                int i = c.insercionRegistro(usu,  "rh", "Elimina empleado");
                 response.sendRedirect("RH/EliminarNomina.jsp");
             }else{
+                int i = c.insercionRegistro(usu,  "rh", "Intento de eliminar empleado");
                 request.getSession().setAttribute("motivo", "La nómina no existe");
                 response.sendRedirect("RH/Error.jsp");
             }

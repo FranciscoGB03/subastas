@@ -8,6 +8,7 @@ package com.sap.rh.servlets;
 
 
 import com.sap.conexion.Conexion;
+import com.sap.gerencia.clases.usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -42,12 +44,16 @@ public class DespedirEmpleado extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String empleado = request.getParameter("despedirIdEmpleado");
             Conexion c = new Conexion();
+            HttpSession sesion=(HttpSession) request.getSession();
+        int usu=Integer.valueOf(sesion.getAttribute("usuario").toString());
             ArrayList lista = c.consulta("id", "empleado", "id = " + empleado, 1);
             if(!lista.isEmpty()){
                 c.actualizar("status = 'Despedido'", "empleado", "id = " + empleado);
                 c.actualizar("actividad = ''", "empleado", "id = " + empleado);
+                int i = c.insercionRegistro(usu,  "rh", "Despido de empleado");
                 response.sendRedirect("RecursosHumanos/DespedirEmpleado.jsp");
             }else{
+                int i = c.insercionRegistro(usu,  "rh", "Intento de despido de empleado");
                 request.getSession().setAttribute("motivo", "El empleado no existe");
                 response.sendRedirect("RH/Error.jsp");
             }

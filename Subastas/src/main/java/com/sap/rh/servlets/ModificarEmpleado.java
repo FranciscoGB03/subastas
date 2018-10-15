@@ -2,6 +2,7 @@ package com.sap.rh.servlets;
 
 
 import com.sap.conexion.Conexion;
+import com.sap.gerencia.clases.usuario;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,12 +36,16 @@ public class ModificarEmpleado extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String empleado = request.getParameter("modificarIdEmpleado");
         Conexion c = new Conexion();
+        HttpSession sesion=(HttpSession) request.getSession();
+        int usu=Integer.valueOf(sesion.getAttribute("usuario").toString());
         ArrayList lista = c.consulta("nombre,primer_apellido,segundo_apellido,nacionalidad,curp,rfc,edad,lugar_nacimiento,direccion,telefono,"
                     + "area,puesto,horario,sueldo,cuenta,id","empleado", "id = "+empleado, 16);
         if(!lista.isEmpty()){
             request.getSession().setAttribute("empleado",lista);
+            int i = c.insercionRegistro(usu,  "rh", "Modifica empleado");
             response.sendRedirect("RH/ModificarResultado.jsp");
         }else{
+            int i = c.insercionRegistro(usu,  "rh", "Intento modificar empleado");
             request.getSession().setAttribute("motivo", "El empleado no existe");
             response.sendRedirect("RH/Error.jsp");
         }
