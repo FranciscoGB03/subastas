@@ -8,8 +8,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Bootstrap -->
+        <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+        <script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed --> 
+        <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
         <link href="../Recursos/css/estilos.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Compras</title>
@@ -18,42 +23,35 @@
     
     <body>
         
-        <header class="sticky-top">
-            
-            <nav class="navbar navbar-expand-lg navbar-light barra">
-                <div>
-                    <a class="navbar-brand" style="color: white" >Compras</a>              
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Compras.jsp" style="color: white">Proveedores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Productos.jsp" style="color: white">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="List_com.jsp" style="color: white">Lista&nbsp;de&nbsp;Compras</a>
-                        </li>                        
-                    </ul>
-                     <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item">
-                            <a class="nav-link" href="" style="color: white">Salir</a>
-                        </li>                                              
-                    </ul>
-                    </div> 
-                </div>
-            </nav>           
-
-        </header>
+      <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <a href="Compras.jsp" class="navbar-brand text-white">Compras</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#compras_navbar" aria-controls="compras_navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="compras_navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="Compras.jsp" class="nav-link text-white">Proovedores</a>
+                    </li>                                                
+                    <li class="nav-item">
+                        <a href="Productos.jsp" class="nav-link text-white">Productos</a>
+                    </li>                                                
+                    <li class="nav-item">
+                        <a href="List_com.jsp" class="nav-link text-white">Lista&nbsp;de&nbsp;Compras</a>
+                    </li>                     
+                </ul>   
+               <form class="form-inline my-2 my-lg-0" action="../CerrarSesion">                
+                    <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <br><br>    
         
         <div id="principal">
             <div class="container-fluid">
-                 <div class="row">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                </div>
+                 
                 <div class="row">
                     <div style="background-color:#F5F5F5;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-style-5"> <!-- Seccion izquierda -->
                         <form method="POST" >
