@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Marii
  */
 @WebServlet(name = "Consulta_prov", urlPatterns = {"/Consulta_prov"})
-public class Consulta_prov extends HttpServlet {
+public class Consulta_pov extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -69,9 +69,9 @@ public class Consulta_prov extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Consulta_prov.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Consulta_pov.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Consulta_prov.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Consulta_pov.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,9 +89,9 @@ public class Consulta_prov extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Consulta_prov.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Consulta_pov.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Consulta_prov.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Consulta_pov.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

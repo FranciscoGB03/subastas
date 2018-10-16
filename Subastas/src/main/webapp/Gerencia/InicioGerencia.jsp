@@ -9,17 +9,20 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../Recursos/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../Recursos/bootstrap/librerias/jquery-3.3.1.min.js" type="text/javascript"></script>
-        <script src="../Recursos/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../Recursos/bootstrap/librerias/popper.min.js" type="text/javascript"></script>
+        <!-- Bootstrap -->
+        <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+        <script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed --> 
+        <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
         <script src="../Gerencia/validaciones/validacion.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js" integrity="sha256-CfcERD4Ov4+lKbWbYqXD6aFM9M51gN4GUEtDhkWABMo=" crossorigin="anonymous"></script>
     </head>
     <body>
         <header class="sticky-top">
             <!--barra de navegacion creada con bootstrap-->
-            <nav class="navbar navbar-expand-lg navbar-dark barra" style="background: #C2C2C2;" >
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <a class="navbar-brand text-white" href="../Gerencia/InicioGerencia.html"><h1>Informaci&oacute;n Gerencial</h1></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -94,7 +97,7 @@ and open the template in the editor.
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                         <div style="background-color: #fff; margin: 20px 2px;">
-                            <a  href="../Contabilidad/Contabilidad.html">
+                            <a  href="../Contabilidad/Contabilidad.jsp">
                                 <h1 style="color: black; margin-left: 20px;">Contabilidad</h1>
                                 <div class="row justify-content-center">
                                     <canvas id="gContabilidad" width="400" height="400"></canvas>
@@ -105,7 +108,7 @@ and open the template in the editor.
                     </div>  
                     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                         <div style="background-color: #fff; margin: 20px 2px;">
-                            <a  href="#">
+                            <a  href="../Inventario/Inventario.jsp">
                                 <h1 style="color: black; margin-left: 20px;">Inventarios</h1>
                                 <div class="row justify-content-center">
                                     <canvas id="gInventarios" width="400" height="400"></canvas>
@@ -116,7 +119,7 @@ and open the template in the editor.
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                         <div style="background-color: #fff; margin: 20px 2px;">
-                            <a href="../RecursosHumanos/rh_index.jsp">
+                            <a href="../RH/rh_index.jsp">
                                 <h1 style="color: black; margin-left: 20px;">Recursos Humanos</h1>
                                 <div class="row justify-content-center">
                                     <canvas id="gRH" width="400" height="400"></canvas>
@@ -132,7 +135,7 @@ and open the template in the editor.
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div style="background-color: #fff; margin: 20px 2px;">
-                            <a href="#">
+                            <a href="../Compras/Compras.jsp">
                                 <h1 style="color: black; margin-left: 20px;">Compras</h1>
                                 <div class="row justify-content-center">                               
                                     <canvas id="gCompras" width="400" height="400"></canvas>
@@ -143,7 +146,7 @@ and open the template in the editor.
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div style="background-color: #fff; margin: 20px 2px;">
-                            <a href="#">
+                            <a href="../Ventas/Ventas.jsp">
                                 <h1 style="color: black; margin-left: 20px;">Ventas</h1>
                                 <div class="row justify-content-center">                               
                                     <canvas id="gVentas" width="400" height="400"></canvas>
