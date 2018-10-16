@@ -243,13 +243,8 @@ function valida(){
     var paterno = document.getElementById("paternoContratarEmp").value.toString();
     var materno = document.getElementById("maternoContratarEmp").value.toString();
     var numero = /[0-9]/;
-    var patron = /([A-Z]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM](AS|BC|BS|CC|CL|CM|CS|CH|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS)[A-Z]{3}[0-9A-Z]\d)/;
     if(numero.test(nombre) || numero.test(paterno) || numero.test(materno)){
         alert("Datos no validos");
-        return false;
-    }
-    if(!patron.test(curp)){
-        alert("CURP no valido");
         return false;
     }
 }
@@ -260,15 +255,11 @@ function validaM(){
     var paterno = document.getElementById("paternoModificarEmp").value.toString();
     var materno = document.getElementById("maternoModificarEmp").value.toString();
     var numero = /[0-9]/;
-    var patron = /([A-Z]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM](AS|BC|BS|CC|CL|CM|CS|CH|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS)[A-Z]{3}[0-9A-Z]\d)/;
+    
     if(numero.test(nombre) || numero.test(paterno) || numero.test(materno)){
         alert("Datos no validos");
         return false;
-    }
-    if(!patron.test(curp)){
-        alert("CURP no valido");
-        return false;
-    }
+    }    
 }
 
 $(document).ready(function(){
