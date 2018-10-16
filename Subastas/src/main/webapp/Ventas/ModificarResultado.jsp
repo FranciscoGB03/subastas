@@ -1,10 +1,13 @@
 <%-- 
-    Document   : Clientes
-    Created on : 12/10/2018, 1:44:05 AM
+    Document   : ModificarResultado
+    Created on : 12/10/2018, 2:30:05 AM
     Author     : asus
 --%>
-
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    ArrayList lista = (ArrayList) request.getSession().getAttribute("cliente");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,14 +37,14 @@
             </button>
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
+                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Clientes.jsp">&nbsp;Cliente</a>
                             <a class="nav-link text-white" href="ModificarCliente.jsp">&nbsp;Modificar cliente</a>
                                                              
                         </div>
-                    </li>                                 
+                    </li>                          
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
@@ -71,7 +74,6 @@
             </div>
         </nav>
     </header>
-    
     <br>
     <br>
     <div class="col-sm-9 central" style="width: auto; margin: auto auto;" >
@@ -81,22 +83,28 @@
     <div class="row"><!-- INICIO DE SECCION PRINCIPAL -->
                 <div class="container-fluid">
                     <center>
-                        <form method="POST" autocomplete="off" action="../Clientes" onsubmit="return validarClientes();" id="formClientes" name="formClientes">
+                        <form method="POST" autocomplete="off" action="../ContratarEmpleado" onsubmit="return valida();" id="formContratarEmp" name="formContratarEmp">
                             <table>
                                  <h1 class="text-uppercase text-center">Cliente</h1>
                                 
                                 <tr>
                                     <td>
+                                        Id Cliente:
+                                    </td>
+                                    <td>
+                                       <input type="text" placeholder="Ingresar clave" class="form-control col-12" name="idModificarCli" id="idModificarCli" value="<%= lista.get(0) %>" required="required" readonly="readonly">
+                                    </td>
+                                    <td>
                                         Clave del Cliente:
                                     </td>
                                     <td>
-                                       <input type="text" placeholder="Ingresar clave" class="form-control col-12" name="claveClientes" id="claveClientes" required="required">
+                                       <input type="text" placeholder="Ingresar clave" class="form-control col-12" name="claveClientes" id="claveClientes" value="<%= lista.get(1) %>" required="required">
                                     </td>
                                     <td>
                                         Estado:
                                     </td>
                                     <td>
-                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="estadoClientes" id="estadoClientes" required="required">
+                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="estadoClientes" id="estadoClientes" value="<%= lista.get(8) %>" required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -104,13 +112,13 @@
                                         Nombre:
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="Ingresar nombre" class="form-control col-12" name="nombreClientes" id="nombreClientes" required="required">
+                                       <input type="text" placeholder="Ingresar nombre" class="form-control col-12" name="nombreClientes" id="nombreClientes" value="<%= lista.get(2) %>"  required="required">
                                     </td>
                                     <td>
                                         Pais:
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="paisClientes" id="paisClientes" required="required">
+                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="paisClientes" id="paisClientes" value="<%= lista.get(9) %>" required="required"> 
                                     </td>
                                 </tr>
                                 <tr>
@@ -118,13 +126,13 @@
                                         Apellido Paterno:
                                     </td>
                                     <td>
-                                       <input type="text" placeholder="Apellido paterno" class="form-control col-12" name="apClientes" id="apClientes" required="required">
+                                       <input type="text" placeholder="Apellido paterno" class="form-control col-12" name="apClientes" id="apClientes" value="<%= lista.get(3) %>"  required="required">
                                     </td>
                                     <td>
                                         RFC:
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="rfcClientes" id="rfcClientes" required="required">
+                                        <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="rfcClientes" id="rfcClientes" value="<%= lista.get(10) %>"required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -132,13 +140,13 @@
                                         Apellido Materno:
                                     </td>
                                     <td>
-                                       <input type="text" placeholder="Apellido materno" class="form-control col-12" name="amClientes" id="amClientes" required="required">
+                                       <input type="text" placeholder="Apellido materno" class="form-control col-12" name="amClientes" id="amClientes" value="<%= lista.get(4) %>"  required="required">
                                     </td>
                                     <td>
                                         Cuenta Contable:
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="cuentacontableClientes" id="cuentacontableClientes" required="required">
+                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="cuentacontableClientes" id="cuentacontableClientes" value="<%= lista.get(11) %>" required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -146,13 +154,13 @@
                                         Direccion:
                                     </td>
                                     <td>
-                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="direccionClientes" id="direccionClientes" required="required">
+                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="direccionClientes" id="direccionClientes" value="<%= lista.get(5) %>" required="required">
                                     </td>
                                     <td>
                                         Cuenta Bancaria:
                                     </td>
                                     <td>
-                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="cuentabancariaClientes" id="cuentabancariaClientes" required="required">
+                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="cuentabancariaClientes" id="cuentabancariaClientes" value="<%= lista.get(12) %>" required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -160,13 +168,13 @@
                                         C.P:
                                     </td>
                                     <td>
-                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12"name="cpClientes" id="cpClientes" required="required">
+                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12"name="cpClientes" id="cpClientes" value="<%= lista.get(6) %>" required="required">
                                     </td>
                                     <td>
                                         Razon Social:
                                     </td>
                                     <td>
-                                       <input type="text" placeholder="Escribe aqui" class="form-control col-12"name="razonsocialClientes" id="razonsocialClientes" required="required">
+                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12"name="razonsocialClientes" id="razonsocialClientes" value="<%= lista.get(13) %>" required="required">
                                     </td>
                                 </tr>
                                 <tr>
@@ -174,15 +182,15 @@
                                         Municipio:
                                     </td>
                                     <td>
-                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="municipioClientes" id="municipioClientes" required="required">
+                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="municipioClientes" id="municipioClientes" value="<%= lista.get(7) %>" required="required">
                                     </td>
                                     
                                 </tr>
                                 <br>
                                 <tr>
                                     <br>
-                                    <td colspan="8" align="center">
-                                        <input type="submit" value="Registrar" class="btn btn-primary"/>
+                                    <td colspan="4" align="center">
+                                        <input type="submit" value="Modificar Cliente" class="btn btn-primary"/>
                                     </td>
                                 </tr>
                             </table>
@@ -193,9 +201,7 @@
             </div>
         </div>
     </div>
-    
-    
-    
+ 
     
     </body>
 </html>

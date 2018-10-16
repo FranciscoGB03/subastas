@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Devolucion
-    Created on : 12/10/2018, 1:44:05 AM
+    Document   : ModificarCliente
+    Created on : 12/10/2018, 1:59:05 AM
     Author     : asus
 --%>
 
@@ -34,14 +34,14 @@
             </button>
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
+                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Clientes.jsp">&nbsp;Cliente</a>
                             <a class="nav-link text-white" href="ModificarCliente.jsp">&nbsp;Modificar cliente</a>
                                                              
                         </div>
-                    </li>                               
+                    </li>                          
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
@@ -71,52 +71,26 @@
             </div>
         </nav>
     </header>
-    <br>
-    <br>
-    <div class="col-sm-9 central" style="width: auto; margin: auto auto;" >
-        <div class="card" text-center>
-            <div class="card-body">
-    
     <div class="row"><!-- INICIO DE SECCION PRINCIPAL -->
+         
                 <div class="container-fluid">
                     <center>
-                        <form method="POST" autocomplete="off" action="../Devolucion" id="formDevolucion" name="formDevolucion">
+                        <h1 class="text-uppercase text-center">Modificar Cliente</h1>
+                        <form method="POST" action="../ModificarCliente" autocomplete="off">
                             <table>
-                                 <h1 class="text-uppercase text-center">Devolucion</h1>
-                                
                                 <tr>
                                     <td>
-                                        Clave de Devolucion:
+                                        Id&nbsp;del&nbsp;cliente
                                     </td>
                                     <td>
-                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="claveDevolucion" id="claveDevolucion" required="required">
-                                    </td>
-                                    <td>
-                                        Motivo de la Devolucion:
-                                    </td>
-                                    <td>
-                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="motivoDevolucion" id="motivoDevolucion" required="required">
+                                        <input type="number" id="modificarIdCliente" name="modificarIdCliente" class="form-control form-control-sm" required="required"/>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        Fecha:
-                                    </td>
-                                    <td>
-                                      <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="fechaDevolucion" id="fechDevolucion" required="required">
-                                    </td>
-                                    <td>
-                                        Id Orden de Venta:
-                                    </td>
-                                    <td>
-                                     <input type="text" placeholder="Escribe aqui" class="form-control col-12" name="idordendeventaDevolucion" id="idordendeventaDevolucion" required="required">
-                                    </td>
-                                </tr>
-                               
-                                <tr>
-                                    
-                                    <td colspan="4" align="center">
-                                        <input type="submit" value="Realizar Devolucion" class="btn btn-primary"/>
+                                    <td colspan="2">
+                                        <center>
+                                            <input type="submit" class="btn btn-primary" value="Buscar"/>
+                                        </center>
                                     </td>
                                 </tr>
                             </table>
@@ -124,14 +98,5 @@
                     </center>
                 </div>
             </div><!-- FIN DE SECCION PRINCIPAL -->
-            </div>
-        </div>
-    </div>
-    
-   
-   
-    
-    
     </body>
 </html>
-
