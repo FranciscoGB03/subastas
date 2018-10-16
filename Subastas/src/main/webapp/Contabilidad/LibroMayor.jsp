@@ -80,15 +80,7 @@
                 </div>
                 <hr/>
                 <form>
-                    <table>
-                        <tr>
-                            <td>
-                                <label for="reporte">Selecciona el tipo de Reporte:</label>
-                                    <select name="reporte" class="form-control">
-                                        <option>sintetico</option>
-                                    </select>                                   
-                            </td>
-                        </tr>
+                    <table>                        
                         <tr>
                             <td>
                                 <label for="ejercicio">Selecciona Periodo:</label>

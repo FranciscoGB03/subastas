@@ -80,22 +80,11 @@
                 </div>
                 <hr/>
                 <form>
-                    <table>
+                    <table>                        
                         <tr>
                             <td>
-                                <label for="reporte">Selecciona el tipo de Reporte:</label>
-                                    <select name="reporte" class="form-control">
-                                        <option>sintetico</option>
-                                    </select>                                   
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="ejercicio">Selecciona Periodo:</label>
-                                    <select name="ejercicio" class="form-control">
-                                        <option>2018</option>
-                                        <option>2017</option>
-                                    </select>                                   
+                                <label for="fecha">Selecciona la fecha:</label>
+                                    <input type="date" name="fecha" class="form-control"/>                                                                       
                             </td>
                         </tr>
                         <tr>                           
