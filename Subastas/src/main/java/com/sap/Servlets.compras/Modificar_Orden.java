@@ -49,7 +49,7 @@ public class Modificar_Orden extends HttpServlet {
         
         Conexion c = new Conexion();
         
-         c.actualizar("fecha_ord,fecha_ent,productos,cantidad,proveedor", "Ordencompra","'"+fech_ord+"','"+fec_ent+"','"
+         c.actualizar("fecha_ord,fecha_ent,prod,cant,id_prov", "ordencompra","'"+fech_ord+"','"+fec_ent+"','"
                  +nomprod+"',"+cant+",'"+proveedor+"'");
          
          

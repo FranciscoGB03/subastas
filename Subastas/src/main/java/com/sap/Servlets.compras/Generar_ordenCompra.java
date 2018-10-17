@@ -49,7 +49,7 @@ public class Generar_ordenCompra extends HttpServlet {
         
         Conexion c = new Conexion();
         
-         c.insertar("folio_orden,fecha_ord,fecha_ent,productos,cantidad,proveedor,status", "Ordencompra",fol_ord+",'"+fech_ord+"','"+fec_ent+"','"
+         c.insertar("folio_ord,fecha_ord,fecha_ent,prod,cant,id_prov,idordenventa", "Ordencompra",fol_ord+",'"+fech_ord+"','"+fec_ent+"','"
                  +nomprod+"',"+cant+",'"+proveedor+"','espera'");
          
          response.sendRedirect("Compras/Nuevo_orden.jsp");

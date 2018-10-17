@@ -50,8 +50,7 @@ public class Nuevo_prov extends HttpServlet {
         String daycredagr=request.getParameter("daycredagr");
         String banco_agr = request.getParameter("banco_agr");
         String numcuagr= request.getParameter("numcuagr");
-        String keycuentagr=request.getParameter("keycuentagr");
-            
+        String keycuentagr=request.getParameter("keycuentagr");            
         c.insertar("rfc,ra_social,direccion,Telefono,correo,estado,cuenta,limitecredito,diascredito,banco,numcuenta,clavecuenta","Proveedor",
                 "'"+rfc+"','"+social+"','"+ dirprov+"','"+numprov+"',"+corprov+","+agr_est+","+contagr+",'"+limtcredagr+"',"+daycredagr+","+ banco_agr+","+ numcuagr+","+ keycuentagr);
             

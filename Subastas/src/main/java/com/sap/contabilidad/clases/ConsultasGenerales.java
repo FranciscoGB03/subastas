@@ -136,12 +136,12 @@ public class ConsultasGenerales {
         conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SAP", connProp);
         Statement stmt;        
         stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT cp.id,cp.clave,cp.idcuentaempresa,ce.descripcion, p.nombre FROM cuentaempresa as ce,cuentaproveedor as cp, proveedores as p where cp.idproveedor=p.id and cp.idcuentaempresa=ce.id;");
+        ResultSet rs = stmt.executeQuery("SELECT cp.id,cp.clave,cp.idcuentaempresa,ce.descripcion, p.ra_social FROM cuentaempresa as ce,cuentaproveedor as cp, proveedor as p where cp.idproveedor=p.id and cp.idcuentaempresa=ce.id;");
             while (rs.next()) {
                 CuentaProveedor cp=new CuentaProveedor();
                 cp.setId(rs.getInt("id"));             
                 cp.setClave(rs.getString("clave"));
-                cp.setNombre(rs.getString("nombre"));
+                cp.setNombre(rs.getString("ra_social"));
                 cp.setCuentaempresa(rs.getString("descripcion"));                
                 l.add(cp);
             }                    
