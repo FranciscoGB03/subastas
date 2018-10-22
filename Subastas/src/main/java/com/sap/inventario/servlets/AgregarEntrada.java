@@ -41,18 +41,16 @@ public class AgregarEntrada extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         Conexion c = new Conexion();
         String eclave = request.getParameter("clave");
-        String enombre = request.getParameter("nombre");
         String eexistencia = request.getParameter("existencia");
         String ecostounitario = request.getParameter("costounitario");
         String eiva = request.getParameter("iva");
         String ecostototal = request.getParameter("costov");
         String efecha = request.getParameter("fecha");
         int cant=Integer.parseInt(eexistencia);
-        Clave p=new Clave();
         Consultas con=new Consultas();
-        c.actualizar("nombre= '"+enombre+"',existencia=existencia+"+cant+",costounitario="+ecostounitario+",iva="+eiva+",costo="+ecostototal+",fecha='"+efecha+"'"
+        c.actualizar("existencia=existencia+"+cant+",costounitario="+ecostounitario+",iva="+eiva+",costo="+ecostototal+",fecha='"+efecha+"'"
                 , "producto"
-                , "clave='"+eclave+"'");
+                , "clave='"+eclave+"' and operacion='entrada'");
 //        c.insertar("clave,nombre,existencia,costounitario, iva,costo,monto_total, fecha,operacion","producto",
 //                "'"+eclave+"',"
 //                       + "'"+enombre+"',"
