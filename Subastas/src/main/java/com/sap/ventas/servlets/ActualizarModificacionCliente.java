@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,7 +39,6 @@ public class ActualizarModificacionCliente extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         String cliente = request.getParameter("idModificarCli");
-        String clave = request.getParameter("claveClientes");
         String nombre = request.getParameter("nombreClientes");
         String paterno = request.getParameter("apClientes");
         String materno = request.getParameter("amClientes");
@@ -48,19 +48,19 @@ public class ActualizarModificacionCliente extends HttpServlet {
         String estado = request.getParameter("estadoClientes");
         String pais = request.getParameter("paisClientes");
         String rfc = request.getParameter("rfcClientes");
-        String cuentacontable = request.getParameter("cuentacontableClientes");
         String cuentabancaria = request.getParameter("cuentabancariaClientes");
         String razonsocial= request.getParameter("razonsocialClientes");
+        HttpSession sesion = request.getSession(true);
         
         Conexion c = new Conexion();
         
-        c.actualizar("clave_cliente = '"+clave+"',nombre = '"+nombre+"', apellido_paterno = '"+paterno+"',apellido_materno = '"+materno+"',direccion = '"+direccion+
-                "',cp = "+cp+",municipio = '"+municipio+"',estado = '"+estado+"',pais = '"+pais+"',rfc = '"+rfc+
-                "',cuenta_contable = '"+cuentacontable+"',cuenta_bancaria = '"+cuentabancaria+"',razon_social = '"+razonsocial+"'"
-                , "cliente", "idcliente = "+cliente);
+        c.actualizar("nombre = '"+nombre+"', ape_pat = '"+paterno+"',ape_mat = '"+materno+"',direccion = '"+direccion+
+                "',cp = "+cp+",municipio = '"+municipio+"',edo = '"+estado+"',pais = '"+pais+"',rfc = '"+rfc+
+                "',cuentabancaria = "+cuentabancaria+",razon = '"+razonsocial+"'"
+                , "cliente", "id = "+cliente);
                 
         
-            response.sendRedirect("Ventas/ModificarCliente.jsp");
+            response.sendRedirect("Ventas/Clientes.jsp");
            
         
     }

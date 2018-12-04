@@ -10,14 +10,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modificar Producto</title>
+        <!------BOOSTRAP------->
         <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-        <script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed --> 
-        <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+<!--Validacion de campos-->
+<script src="../Recursos/js/Inventario.js" type="text/javascript"></script>    
     </head>
-<body><header class="sticky-top">
+    <body>
+            <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
             <a href="Inventario.jsp" class="navbar-brand text-white">Inventario</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#inv_navbar" aria-controls="inv_navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +49,14 @@
                             <a class="nav-link text-white" href="InventarioMermaAgregar.jsp">Agregar&nbsp;Merma</a>
                             <a class="nav-link text-white" href="InventarioMermaModificar.jsp">Modificar&nbsp;Merma</a>                                  
                         </div>
-                    </li>                            
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#InventarioRequisicion.jsp" class="nav-link dropdown-toggle text-white" id="req" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Requisicion</a>
+                        <div class="dropdown-menu bg-primary" aria-labelledby="inventario">
+                            <a class="nav-link text-white" href="InventarioDetalleReq.jsp">Requisiciones</a>
+                            <a class="nav-link text-white" href="InventarioRequisicion.jsp">Agregar&nbsp;Requisicion</a>                                  
+                        </div>
+                    </li>
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
@@ -53,52 +64,74 @@
             </div>
         </nav>
     </header>      
-    <br/><br/>
-    <!--Panel---------------------------------------------------------------------------------->
-    <div class="row">
+    <br>
+    <br>
     <!--Panel-->
-    <div class="col-sm-9 central" style="width: auto; margin: auto auto;" >
+                        
+    <div class="col-sm-5 central" style="width: auto; margin: auto auto;" id="tabla" >
         <div class="card" text-center>
             <div class="card-body">
                 
-                        <form  action="../ModificarProducto" method="post">
-                <h3 class="card-title" >Modificar Producto </h3><br><br>
+                <h3 class="card-title" >Modificar Producto</h3><br><br>
                 <!--INICIO CUESTIONARIO-->
-                <label class="card-text">Ingrese clave de producto:</label><br>
-                <input type="text" id="bclave" name="bclave" class="form-control form-control-sm" />
-                <input id="buscarclave" type="submit" value="Buscar" class="btn btn-success"/><br><br>
-                <label class="card-text">Ingrese clave de producto:</label><br>
-                <input type="text" id="clave" name="clave" class="form-control form-control-sm" required="required" />
-                <label class="card-text">Ingrese el nombre:</label><br>
-                <input type="text" id="nombre" name="nombre" class="form-control form-control-sm" required="required" />
-                <p class="card-text">Ingrese tipo de producto</p>
-                <input type="text" id="tipo" name="tipo" class="form-control form-control-sm" />
-                <label class="card-text">Ingrese la unidad:</label><br>
-                <input type="text" id="unidad" name="unidad" class="form-control form-control-sm" />
-                <p class="card-text">Ingrese la cantidad</p>
-                <input type="number" id="cantidad" name="cantidad" class="form-control form-control-sm" required="required"/>
-                <p class="card-text">Ingrese el costo unitario:</p>
-                <input type="number" id="costounitario" name="costounitario" class="form-control form-control-sm" required="required"/>
-                <p class="card-text">Ingrese el iva</p>
-                <input type="number" id="iva" name="iva" step="0.01" class="form-control form-control-sm" />
-                <p class="card-text">Ingrese el costo venta:</p>
-                <input type="number" id="costo" name="costo" class="form-control form-control-sm" required="required"/>
-                <p class="card-text">Ingrese la fecha</p>
-                <input type="date" id="fecha" name="fecha" class="form-control form-control-sm" />
-                <p class="card-text">Ingrese la operacion</p>
-                <select id="operacion" name="operacion" class="form-control">
+                
+                <form role="form" action="../BuscarProductoM" method="post">
+                <label class="card-text">Ingrese la clave anterior:</label><br>
+
+                <%out.println("<input id='clavep' name='clavep' class='form-control' required='required' type='text' value="+request.getSession().getAttribute("clave")+">");%>
+                     <input type="submit" value="buscar" class="btn btn-default"/>
+                </form>
+             <form  action="../ModificarProducto" method="post" >
+                                 <hr>
+                                <label for="clave">Ingrese la clave de producto:</label><br>
+                         <%out.println("<input id='clave' name='clave' class='form-control' readonly='readonly' type='text' value="+request.getSession().getAttribute("clave")+">");%>
+                               <label for="nombre">Ingrese el nombre del producto:</label><br>
+               <%out.println("<input id='nombre' name='nombre' class='form-control' type='text' required='required' value="+request.getSession().getAttribute("nombre")+">");%>
+                               <label for="tipo">Ingrese tipo de producto</label>
+                                 <select id="tipo" name="tipo" class="form-control" required='required'>
                                     <option value="x">Seleccione...</option>
-                                    <option value="existente ">Existente</option>
-                                    <option value="entrada">Entrada</option>
-                                    <option value="salida">Salida</option>
+                                    <%out.println("<option value="+request.getSession().getAttribute("tipo")+">");%>
+                                    <option value="Ropa">Ropa</option>
+                                    <option value="Accesorios">Accesorios</option>
+                                    <option value="Herramienta">Herramienta</option>
+                                    <option value="Hogar">Hogar</option>
+                                    <option value="Joyeria">Joyeria</option>
+                                    <option value="Electronicos">Electronicos</option>
+                                    <option value="Calzado">Calzado</option>
                                 </select>
-                <input id="boamerma" type="submit" value="Guardar" class="btn btn-success"/>
-                        </form>
+                                
+                                <label for="unidad">Ingrese la unidad del producto:</label><br>
+                                <select id="unidad" name="unidad" class="form-control">
+                                    <%out.println("<option value="+request.getSession().getAttribute("unidad")+">");%>
+                                    <option value="x">Seleccione...</option>
+                                    <option value="pieza">pieza</option>
+                                    <option value="paquete">paquete</option>
+                                    <option value="caja">caja</option>
+                                    <option value="elemento">elemento</option>
+                                    <option value="kit">kit</option>
+                                    <option value="equipo">equipo</option>
+                                    <option value="par">par</option>
+                                    <option value="lote">lote</option>
+                                 </select>
+                <label for="costo">Ingrese el costo del producto:</label>  
+                <%out.println("<input type='number' id='costo' name='costo' step='0.01' class='form-control' required='required' value="+request.getSession().getAttribute("costounitario")+">");%>
+          
+                <label for="costo">Ingrese el costo de venta:</label>
+                <%out.println("<input type='number' id='costov' name='costov' step='0.01' class='form-control' required='required' value="+request.getSession().getAttribute("precio_venta")+">");%>
+                 <label for="iva">Ingrese el iva del producto</label>
+                 <%out.println("<input type='number' id='iva' name='iva' step='0.01' class='form-control' required='required' value="+request.getSession().getAttribute("iva")+">");%>
+                 <label for="cantidad">Ingrese la cantidad del producto</label>
+                 <%out.println("<input type='number' id='cantidad' name='cantidad'  class='form-control' required='required' value="+request.getSession().getAttribute("cantidad")+">");%>
+                
+                                <input type="reset" value="Cancelar" class="btn btn-default"/>                                                        
+                                <input type="submit" value="Agregar" class="btn btn-default"/>
+                 </form>
             </div>
         </div>
     </div>
     <!--/.Panel-->
     
 </div>
-</body>
+    
+    </body>
 </html>

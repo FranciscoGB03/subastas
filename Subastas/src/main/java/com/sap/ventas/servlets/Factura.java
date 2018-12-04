@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,17 +39,20 @@ public class Factura extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String clave = request.getParameter("claveFactura");
         String fecha = request.getParameter("fechaFactura");
-        String cliente = request.getParameter("nombredelclienteFactura");
-        String proveedor = request.getParameter("nombredelproveedorFactura");
+        String tipo = request.getParameter("tipoFactura");
+        String cliente = request.getParameter("nombreclienteFactura");
+        String proveedor = request.getParameter("nombreproveedorFactura");
         String total = request.getParameter("totalFactura");
-        String idOVF = request.getParameter("idordendeventaFactura");
+        String idOVF = request.getParameter("idordenventaFactura");
+        String idP = request.getParameter("idproveedorFactura");
+        HttpSession sesion = request.getSession(true);
         Conexion c = new Conexion();
         
-        c.insertar("clave_factura,fecha,nombre_cliente,nombre_proveedor,total,idordenventa","factura","'"+clave+"','"+fecha+"','"+cliente+"','"+proveedor+"',"+total+","+idOVF+"");
+        c.insertar("clave,fecha,tipo,nombrecliente,nombreproveedor,total,idordenventa,idproveedor","factura","'"+clave+"','"+fecha+"',"+tipo+",'"+cliente+"','"+proveedor+"',"+total+","+idOVF+","+idP+"");
         
         
         response.sendRedirect("Ventas/Factura.jsp");
-            }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
@@ -81,5 +85,9 @@ public class Factura extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    void setId(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+}
 
 }

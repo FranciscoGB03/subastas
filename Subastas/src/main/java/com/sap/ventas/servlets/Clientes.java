@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,7 +38,6 @@ public class Clientes extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        String clave = request.getParameter("claveClientes");
         String nombre = request.getParameter("nombreClientes");
         String paterno = request.getParameter("apClientes");
         String materno = request.getParameter("amClientes");
@@ -47,16 +47,16 @@ public class Clientes extends HttpServlet {
         String estado = request.getParameter("estadoClientes");
         String pais = request.getParameter("paisClientes");
         String rfc = request.getParameter("rfcClientes");
-        String cuentacontable = request.getParameter("cuentacontableClientes");
         String cuentabancaria = request.getParameter("cuentabancariaClientes");
         String razonsocial= request.getParameter("razonsocialClientes");
+        HttpSession sesion = request.getSession(true);
         Conexion c = new Conexion();
-        //usuario usu = new usuario();
-        c.insertar("clave_cliente,nombre,apellido_paterno,apellido_materno,direccion,cp,municipio,estado,pais,rfc,cuenta_contable,"
-                + "cuenta_bancaria,razon_social","cliente","'"+clave+"','"+nombre+"','"+paterno+"','"+materno+"','"+direccion+"',"+cp+",'"+municipio+"','"+estado+"','"+pais+"','"+rfc+"','"+cuentacontable+"','"+cuentabancaria+"','"+razonsocial+"'");
+        
+        c.insertar("nombre,ape_pat,ape_mat,direccion,cp,municipio,edo,pais,rfc,"
+                + "cuentabancaria,razon","cliente","'"+nombre+"','"+paterno+"','"+materno+"','"+direccion+"',"+cp+",'"+municipio+"','"+estado+"','"+pais+"','"+rfc+"',"+cuentabancaria+",'"+razonsocial+"'");
         
         
-//        int i = c.insercionRegistro(usu.getId_emp(),  "rh", "Contratacion de empleado empleado");
+//        
         
         response.sendRedirect("Ventas/Clientes.jsp");
         

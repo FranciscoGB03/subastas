@@ -6,11 +6,11 @@
 package com.sap.inventario.servlets;
 
 import com.sap.conexion.Conexion;
-import com.sap.inventario.clases.Clave;
 import com.sap.inventario.clases.Consultas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,30 +41,22 @@ public class AgregarEntrada extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         Conexion c = new Conexion();
         String eclave = request.getParameter("clave");
-        String eexistencia = request.getParameter("existencia");
-        String ecostounitario = request.getParameter("costounitario");
-        String eiva = request.getParameter("iva");
-        String ecostototal = request.getParameter("costov");
-        String efecha = request.getParameter("fecha");
-        int cant=Integer.parseInt(eexistencia);
-        Consultas con=new Consultas();
-        c.actualizar("existencia=existencia+"+cant+",costounitario="+ecostounitario+",iva="+eiva+",costo="+ecostototal+",fecha='"+efecha+"'"
-                , "producto"
-                , "clave='"+eclave+"' and operacion='entrada'");
-//        c.insertar("clave,nombre,existencia,costounitario, iva,costo,monto_total, fecha,operacion","producto",
-//                "'"+eclave+"',"
-//                       + "'"+enombre+"',"
-//                       + ""+eexistencia+","
-//                       + ""+ecostounitario+","
-//                       + ""+eiva+","
-//                       + ""+ecostototal+","
-//                       + ""+emontototal+","
-//                       + "'"+efecha+"','entrada'"
-//                       );
+        String cantidad = request.getParameter("cantidad");
+        int cant=Integer.parseInt(cantidad);
+
+        //campos para actualizar productos
+        //campos que se insertaran en detalle de orden de venta
+        String detallecampos="cantidad,id_producto";
+        //campos que se insetaran en orden de venta
         
+        
+        //actualizar cantidad de productos
+        c.actualizar("cantidad=cantidad+"+cant, "producto", "clave='"+eclave+"'");
+        //insertar en tabla detalle de orden de venta y de orden de venta
+        c.insertardemastablas(detallecampos,"detallecompra", cantidad+",id from producto where clave='"+eclave+"'");
+      
          response.sendRedirect("Inventario/InventarioAgregarEntrada.jsp");
-                   
-//        
+          
     }
 
 

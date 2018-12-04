@@ -4,7 +4,6 @@
     Author     : claudia
 --%>
 
-<%@page import="com.sap.inventario.clases.VarSal"%>
 <%@page import="com.sap.inventario.clases.Producto"%>
 <%@page import="com.sap.inventario.clases.Consultas"%>
 <%@page import="java.util.LinkedList"%>
@@ -14,14 +13,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inventario</title>
-        <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-        <script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed --> 
-        <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
-    </head>
-<body><header class="sticky-top">
+    <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+</head>
+<body>  
+    <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
             <a href="Inventario.jsp" class="navbar-brand text-white">Inventario</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#inv_navbar" aria-controls="inv_navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,14 @@
                             <a class="nav-link text-white" href="InventarioMermaAgregar.jsp">Agregar&nbsp;Merma</a>
                             <a class="nav-link text-white" href="InventarioMermaModificar.jsp">Modificar&nbsp;Merma</a>                                  
                         </div>
-                    </li>                            
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#InventarioRequisicion.jsp" class="nav-link dropdown-toggle text-white" id="req" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Requisicion</a>
+                        <div class="dropdown-menu bg-primary" aria-labelledby="inventario">
+                            <a class="nav-link text-white" href="InventarioDetalleReq.jsp">Requisiciones</a>
+                            <a class="nav-link text-white" href="InventarioRequisicion.jsp">Agregar&nbsp;Requisicion</a>                                  
+                        </div>
+                    </li>
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
@@ -57,7 +64,8 @@
             </div>
         </nav>
     </header>      
-    <br/><br/>
+    <br>
+    <br>
     <!--Fin de barra-->
     
     <div class="row">
@@ -105,22 +113,13 @@
           Nombre Producto
         </th>
         <th>
-          Costo unitario
-        </th>
-        <th>
           Cantidad
         </th>
         <th>
-          IVA
+          Costo unitario
         </th>
         <th>
-          Costo de venta
-        </th>
-        <th>
-          Monto Total
-        </th>
-        <th>
-          Fecha de salida
+            Costo total
         </th>
       </tr>
 <%
@@ -130,12 +129,9 @@
                            out.println("<tr>");                               
                            out.println("<td>"+lista.get(i).getClave()+"</td>");
                            out.println("<td>"+lista.get(i).getNombre()+"</td>");
-                           out.println("<td>"+lista.get(i).getCostounitario()+"</td>");
                            out.println("<td>"+lista.get(i).getCantidad()+"</td>");
-                           out.println("<td>"+lista.get(i).getIva()+"</td>");
+                           out.println("<td>"+lista.get(i).getCostounitario()+"</td>");
                            out.println("<td>"+lista.get(i).getCostototal()+"</td>");
-                           out.println("<td>"+lista.get(i).getMontototal()+"</td>");
-                           out.println("<td>"+lista.get(i).getFecha()+"</td>");
                            out.println("</tr>");
                         }
                     %>

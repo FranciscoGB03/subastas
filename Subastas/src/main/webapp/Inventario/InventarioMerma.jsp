@@ -9,21 +9,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Inventario Merma</title>
-        <!-- Bootstrap -->
-        <link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-        <script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed --> 
-        <script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
+<link href="../Recursos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="../Recursos/Bootstrap/include/jquery-3.3.1.min.js" type="text/javascript"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="../Recursos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../Recursos/Bootstrap/include/popper.min.js" type="text/javascript"></script>
     </head>
     <body>
-      <header class="sticky-top">
+    <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
             <a href="Inventario.jsp" class="navbar-brand text-white">Inventario</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#inv_navbar" aria-controls="inv_navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +45,14 @@
                             <a class="nav-link text-white" href="InventarioMermaAgregar.jsp">Agregar&nbsp;Merma</a>
                             <a class="nav-link text-white" href="InventarioMermaModificar.jsp">Modificar&nbsp;Merma</a>                                  
                         </div>
-                    </li>                            
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#InventarioRequisicion.jsp" class="nav-link dropdown-toggle text-white" id="req" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Requisicion</a>
+                        <div class="dropdown-menu bg-primary" aria-labelledby="inventario">
+                            <a class="nav-link text-white" href="InventarioDetalleReq.jsp">Requisiciones</a>
+                            <a class="nav-link text-white" href="InventarioRequisicion.jsp">Agregar&nbsp;Requisicion</a>                                  
+                        </div>
+                    </li>
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
@@ -59,7 +60,8 @@
             </div>
         </nav>
     </header>      
-    <br/><br/>
+    <br>
+    <br>
     <!--/.Panel-->
     <div class="row">
     <div class="col-sm-3 ">
@@ -68,13 +70,10 @@
                 <label class="card-text">Buscar id de merma</label><br>
                 <input type="text" id="bmerma" name="bmerma" class="form-control form-control-sm" />
                 <input id="bomerma" type="submit" value="Buscar" class="btn btn-success"/><br><br>
-                <p class="card-text">Eliminar producto de merma</p>
-                <input type="text" id="emerma" name="emerma" class="form-control form-control-sm" />
-                <input id="boemerma" type="submit" value="Eliminar" class="btn btn-success"/><br><br>
-                <p class="card-text">Nuevo producto de merma</p>
-                <input id="boamerma" type="submit" value="Agregar" class="btn btn-success"/><br><br>
-                <p class="card-text">Modificar producto de merma</p>
-                <input id="bommerma" type="submit" value="Modificar" class="btn btn-success"/><br><br>
+                <hr>
+                <a href="InventarioMermaAgregar.jsp"><label class="card-text">Nuevo producto de merma</label></a>
+                <a href="InventarioMermaModificar.jsp"><label class="card-text">Modificar producto de merma</label></a>
+                <hr>
                 <p class="card-text">Reporte</p>
                 <input id="bogmerma" type="submit" value="Generar" class="btn btn-success"/>
             </div>
@@ -92,7 +91,7 @@
                                 <th>Clave merma</th>
                                 <th>Clave producto</th>
                                 <th>Cantidad</th>
-                                <th>Descripcion</th>
+                                <th>Motivo</th>
                                 <th>Fecha</th>
                                 <th>Tipo merma</th>                               
                             </tr>

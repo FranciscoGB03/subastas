@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sap Ventas</title>
+<title>Ventas</title>
 <!--Enlace a estilos personalizados de COntabilidad-->
 <link href="../Recursos/css/contabilidad.css" rel="stylesheet" type="text/css"/>
 <!--Validacion de campos-->
@@ -37,26 +37,23 @@
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Clientes.jsp">&nbsp;Cliente</a>
-                            <a class="nav-link text-white" href="ModificarCliente.jsp">&nbsp;Modificar cliente</a>
-                                                             
                         </div>
                     </li>       
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atencion</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-                            <a class="nav-link text-white" href="Pedido.jsp">&nbsp;Pedido</a>
                             <a class="nav-link text-white" href="Orden de Venta.jsp">&nbsp;Orden de Venta</a>
                                                              
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Salida Ventas</a>
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Salida de Ventas</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Factura.jsp">&nbsp;Factura</a>
                         </div>
                     </li> 
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Otro</a>
+                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entrada de Ventas</a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
                             <a class="nav-link text-white" href="Devolucion.jsp">&nbsp;Devolucion</a>
                         </div>
@@ -64,7 +61,7 @@
                      
                               
                 </ul>   
-               <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
+               <form class="form-inline my-2 my-lg-0" action="../CerrarSesion">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
                 </form>
             </div>
@@ -78,7 +75,11 @@
         </div>
         <!--Columna Central-->
         <div class="col-xs-6 col-md-6 central table-responsive">   
-            <h1 class="text-center">¡Bienvenido al M&oacute;dulo de Ventas!</h1>          
+            <br>
+            <br>
+            <br>
+            <h1 class="text-center">¡Bienvenido!</h1>
+            <h1 class="text-center">M&oacute;dulo de Ventas</h1>      
         </div>
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha table-responsive">
