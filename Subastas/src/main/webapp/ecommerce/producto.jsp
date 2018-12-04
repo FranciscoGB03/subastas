@@ -69,9 +69,9 @@
      
     </tr>  
     <tr>
-     <td>Paquete de Desarmadores<br>$80.00 <br><button type="submit" class="btn btn-success" style="margin-top:15px;margin-left:100px;padding-right: 30px ">Detalles</button></td>                   
-     <td>Martillo de acero<br>$50.00<br><button type="submit" class="btn btn-success" style="margin-top:15px;margin-left:100px;padding-right: 30px ">Detalles</button></td>
-    <td>Pala de construcción<br>$20.00<br><button type="submit" class="btn btn-success" style="margin-top:15px;margin-left:100px;padding-right: 30px ">Detalles</button></td>     
+     <td><form action="desarma.html">Paquete de Desarmadores<br>$80.00 <br><button type="submit" class="btn btn-success" style="margin-top:15px;margin-left:100px;padding-right: 30px ">Detalles</button></form></td>                   
+     <td><form action="martillo.html">Martillo de acero<br>$50.00<br><button type="submit" class="btn btn-success" style="margin-top:15px;margin-left:100px;padding-right: 30px ">Detalles</button></form></td>
+     <td><form action="pala.html">Pala de construcción<br>$20.00<br><button type="submit" class="btn btn-success" style="margin-top:15px;margin-left:100px;padding-right: 30px ">Detalles</button></form></td>     
     </tr> 
   </tbody>
      </table>       
