@@ -20,34 +20,21 @@
 <body>    
     <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-            <a href="Contabilidad.jsp" class="navbar-brand text-white">Contabilidad</a>
+            <a href="Contabilidad.jsp" class="navbar-brand text-white">Subastas</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conta_navbar" aria-controls="conta_navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="CalendarioContable.jsp" class="nav-link text-white">Calendario&nbsp;Contable</a>
-                    </li>                            
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuentas Contables</a>
-                        <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-                            <a class="nav-link text-white" href="CuentasCliente.jsp">Cuentas&nbsp;Clientes</a>
-                            <a class="nav-link text-white" href="CuentasProveedor.jsp">Cuentas&nbsp;Proveedores</a>
-                            <a class="nav-link text-white" href="CuentasEmpresa.jsp">Cuentas&nbsp;Empresa</a>
-                            <a class="nav-link text-white" href="CuentasSat.jsp">Cuentas&nbsp;SAT</a>                                    
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="AsientosContables.jsp" class="nav-link text-white">Asientos&nbsp;Contables</a>
+                        <a href="index.html" class="nav-link text-white">Inicio</a>
                     </li> 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle text-white" id="libros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Libros</a>
-                        <div class="dropdown-menu bg-primary" aria-labelledby="libros">
-                            <a class="nav-link text-white" href="LibroDiario.jsp">Libro&nbsp;Diario</a>
-                            <a class="nav-link text-white" href="LibroMayor.jsp">Libro&nbsp;Mayor</a>                                    
-                        </div>
-                    </li>                            
+                    <li class="nav-item">
+                        <a href="producto.html" class="nav-link text-white">Productos&nbsp;en&nbsp;subasta</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a href="venta.html" class="nav-link text-white">Acerca&nbsp;de</a>
+                    </li> 
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
@@ -59,7 +46,27 @@
 <!--Contenedor principal de la pagina-->
 <div class="container-fluid">
     <!--HAciendo una fila para dividir el contenedor en columnas-->
-    
+    <div class="row">
+        <!--Columna izquierda-->
+        <div class="col-xs-3 col-md-3 izquierda">
+        	<div class="panel panel-default">
+              <div class="panel-body">
+          
+              </div>
+            </div>
+        </div>
+        <!--Columna Central-->
+        <div class="col-xs-6 col-md-6 central" id="tabla">
+             
+              <center><h1 class="titulo">Bienvenido</h1></center>
+              <br>
+        <center><img src="Recursos/imagenes/subastas.jpg" width="500" height="180"/></center>
+            
+        </div>
+        <!--columna de la derecha-->
+        <div class="col-xs-3 col-md-3 derecha">
+        </div>
+    </div>
 </div>
 </body>
 </html>
