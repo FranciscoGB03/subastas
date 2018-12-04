@@ -27,13 +27,13 @@
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link text-white">Inicio</a>
+                        <a href="index.jsp" class="nav-link text-white">Inicio</a>
                     </li> 
                     <li class="nav-item">
-                        <a href="producto.html" class="nav-link text-white">Productos&nbsp;en&nbsp;subasta</a>
+                        <a href="producto.jsp" class="nav-link text-white">Productos&nbsp;en&nbsp;subasta</a>
                     </li>  
                     <li class="nav-item">
-                        <a href="venta.html" class="nav-link text-white">Acerca&nbsp;de</a>
+                        <a href="venta.jsp" class="nav-link text-white">Acerca&nbsp;de</a>
                     </li> 
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
