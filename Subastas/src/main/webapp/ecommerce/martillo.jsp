@@ -79,6 +79,32 @@
         </div>
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha">
+             <div class="jumbotron">
+                 <center><h4>Participantes</h4></center>
+                    <table class="table table-bordered" style="margin-top:40px; ">
+                   <thead>
+    <tr >
+        <th scope="col"><center>Usuario</center></th>
+      <th scope="col"><center>Monto</center></th>
+       
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Pedro Ramírez</th>
+      <td>$100.00</td>     
+    </tr>
+    <tr>
+      <th scope="row">Sebastián Lara</th>
+      <td>$95.00</td>     
+    </tr> 
+    <tr>
+      <th scope="row">Fabiola Romero</th>
+      <td>$90.00</td>     
+    </tr> 
+  </tbody>
+     </table>
+                </div>
         </div>
     </div>
 </div>
