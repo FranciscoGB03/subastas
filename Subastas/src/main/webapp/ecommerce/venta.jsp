@@ -17,37 +17,25 @@
 <!--Validacion de campos-->
 <script src="../Recursos/js/Contabilidad.js" type="text/javascript"></script>
 </head>
+
 <body>    
     <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-            <a href="Contabilidad.jsp" class="navbar-brand text-white">Contabilidad</a>
+            <a href="Contabilidad.jsp" class="navbar-brand text-white">Subastas</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conta_navbar" aria-controls="conta_navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="conta_navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="CalendarioContable.jsp" class="nav-link text-white">Calendario&nbsp;Contable</a>
-                    </li>                            
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle text-white" id="cuentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuentas Contables</a>
-                        <div class="dropdown-menu bg-primary" aria-labelledby="cuentas">
-                            <a class="nav-link text-white" href="CuentasCliente.jsp">Cuentas&nbsp;Clientes</a>
-                            <a class="nav-link text-white" href="CuentasProveedor.jsp">Cuentas&nbsp;Proveedores</a>
-                            <a class="nav-link text-white" href="CuentasEmpresa.jsp">Cuentas&nbsp;Empresa</a>
-                            <a class="nav-link text-white" href="CuentasSat.jsp">Cuentas&nbsp;SAT</a>                                    
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="AsientosContables.jsp" class="nav-link text-white">Asientos&nbsp;Contables</a>
+                        <a href="index.jsp" class="nav-link text-white">Inicio</a>
                     </li> 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle text-white" id="libros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Libros</a>
-                        <div class="dropdown-menu bg-primary" aria-labelledby="libros">
-                            <a class="nav-link text-white" href="LibroDiario.jsp">Libro&nbsp;Diario</a>
-                            <a class="nav-link text-white" href="LibroMayor.jsp">Libro&nbsp;Mayor</a>                                    
-                        </div>
-                    </li>                            
+                    <li class="nav-item">
+                        <a href="producto.jsp" class="nav-link text-white">Productos&nbsp;en&nbsp;subasta</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a href="venta.jsp" class="nav-link text-white">Acerca&nbsp;de</a>
+                    </li> 
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
                     <button class="btn-outline-primary barra text-white my-2 my-sm-0" id="cerrarSesion" type="submit">Cerrar Sesi&oacute;n</button>
@@ -68,26 +56,41 @@
         <div class="col-xs-6 col-md-6 central" id="tabla">
             <div class="jumbotron">
                 <div class="container">
-                    <h4 class="titulo">Adquisici�n de produto</h4>
+                    <center><h4 class="titulo">Datos para transacción</h4></center>
                     <div class="container">
-                        <form role="form" action="../pago" method="post">                                                                                                                          
+                        <form role="form" action="martillo.jsp" method="post">                                                                                              
                             <div class="form-group">
-                                <label for="cuenta">Cuenta:</label>                                                        
-                                <input id="cuenta" type="text" name="cuenta" class="form-control">                                    
+                                <label for="tarjeta">Número de tarjeta: </label>                                                        
+                                <input id="tarjeta" name="tarjeta" class="form-control" type="number" required="required"/>
                             </div>                                                        
                             <div class="form-group">
-                                <label for="monto">Monto:</label>                                                        
-                                <input id="monto" type="text" name="monto" class="form-control">                                    
-                            </div>                                                        
-                            <div class="form-group">
-                                <label for="fechaini">Fecha:</label>                                                                
-                                <input id="fecha" name="fecha" class="form-control" type="date" required="required"/>                                    
-                            </div>                            
-                            <div class="form-group">
-                                <input type="reset" value="Cancelar" class="btn btn-default"/>                                                        
-                                <input type="submit" value="Agregar" class="btn btn-default"/>
-                            </div>                            
-                        </form>
+                                <label for="vencimiento">Fecha de vencimiento :</label>                                                        
+                                <input id="vencimiento" type="date" name="vencimiento" class="form-control">                                    
+                            </div> 
+                            <table>
+                                <tbody>
+                                    <tr>
+                                     <td><div class="form-group">
+                                <label for="seguridad">Código de seguridad:</label>                                                                
+                                <input id="seguridad" name="seguridad" class="form-control" type="number" required="required"/>                                    
+                            </div></td>
+                            <td>
+                            </td>
+                            <td>                             
+                            </td>
+                             <td><div class="form-group">
+                                <label for="nip">NIP:</label>                            	                                
+                                <input id="nip" name="nip" class="form-control" type="number" required="required"/>                                    
+                            </div>  </td>
+                                    </tr>    
+                                </tbody>
+                            </table>
+                                <button type="submit" class="btn btn-success" style="margin-top:15px;padding-right: 30px ">Finalizar</button>                               
+                                </form>
+                        
+                          <form action="producto.jsp" method="post">
+                              <center> <input type="submit" value="Regresar" class="btn btn-default"/></center>
+                        </form>  
                     </div>
                 </div>
             </div>
