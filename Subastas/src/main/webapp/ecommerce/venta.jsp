@@ -62,76 +62,27 @@
     <div class="row">
         <!--Columna de la izquierda-->
         <div class="col-xs-3 col-md-3 izquierda">
-        	<div class="panel panel-default">
-              <div class="panel-body">
-              <div class="container">
-              	<form action="" method="post">
-                <div class="row">                        
-                    <div class="col-xs-2">
-                       	<input id="clave" name="clave" class="form-control" type="text" placeholder="ingresa clave a buscar" required="required"/>
-                    </div>
-               	</div>
-              	<div class="row">                        
-                    <div class="col-xs-2">
-                      <input id="submit" type="button" value="buscar"/>       
-                    </div>
-              	</div>
-                    
-                </form>
-                </div>
-                <hr/>
-                <table class="tabla">
-                	<tr>
-                    	<td>
-                    		<a href="AgregarPeriodoContable.jsp">Agregar Periodo Contable</a>
-                        </td>
-                    </tr>
-                	<tr>
-                    	<td>
-                    		<a href="ModificarPeriodoContable.jsp">Modificar Periodo Contable</a>
-                        </td>
-                    </tr>
-                	<tr>
-                    	<td>
-                    		<a href="EliminarPeriodoContable.jsp">Eliminar Periodo Contable</a>
-                        </td>
-                    </tr>                                        
-                </table>
-              </div>
-            </div>
+        
         </div>
         <!--Columna Central-->
         <div class="col-xs-6 col-md-6 central" id="tabla">
             <div class="jumbotron">
                 <div class="container">
-                    <h4 class="titulo">Agregar Periodo Contable</h4>
+                    <h4 class="titulo">Adquisición de produto</h4>
                     <div class="container">
-                        <form role="form" action="../AgregarPeriodoContable" method="post">                                                                                              
+                        <form role="form" action="../pago" method="post">                                                                                                                          
                             <div class="form-group">
-                                <label for="clavep">Ingresa clave de periodo:</label>                                                        
-                                <input id="clavep" name="clavep" class="form-control" type="text" required="required"/>
+                                <label for="cuenta">Cuenta:</label>                                                        
+                                <input id="cuenta" type="text" name="cuenta" class="form-control">                                    
                             </div>                                                        
                             <div class="form-group">
-                                <label for="ejercicio">A&ntilde;o:</label>                                                        
-                                <input id="ejercicio" type="number" name="ejercicio" class="form-control">                                    
+                                <label for="monto">Monto:</label>                                                        
+                                <input id="monto" type="text" name="monto" class="form-control">                                    
                             </div>                                                        
                             <div class="form-group">
-                                <label for="fechaini">Fecha de inicio:</label>                                                                
-                                <input id="fechaini" name="fechaini" class="form-control" type="date" required="required"/>                                    
-                            </div>
-                            <div class="form-group">
-                                <label for="fechafin">Fecha final:</label>                            	                                
-                                <input id="fechafin" name="fechafin" class="form-control" type="date" required="required"/>                                    
-                            </div>                                                        
-                            <div class="form-group">
-                                <label for="estado">Estado:</label>                                                            
-                                <select id="estado" name="estado" class="form-control">
-                                    <option value="x">Seleccione...</option>
-                                    <option value="abierto">Abierto</option>
-                                    <option value="bloqueado">Bloqueado</option>
-                                    <option value="cerrado">Cerrado</option>
-                                </select>                                    
-                            </div>                                                                                    
+                                <label for="fechaini">Fecha:</label>                                                                
+                                <input id="fecha" name="fecha" class="form-control" type="date" required="required"/>                                    
+                            </div>                            
                             <div class="form-group">
                                 <input type="reset" value="Cancelar" class="btn btn-default"/>                                                        
                                 <input type="submit" value="Agregar" class="btn btn-default"/>

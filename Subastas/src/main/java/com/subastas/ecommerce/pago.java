@@ -5,6 +5,8 @@
  */
 package com.subastas.ecommerce;
 
+import com.sap.subastas.cliente.TransaccionService;
+import com.sap.subastas.cliente.TransaccionService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,6 +34,13 @@ public class pago extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        //obtencion de datos
+        
+        //inicio de transaccion con banca electronica
+        TransaccionService_Service prueba=new TransaccionService_Service();
+        TransaccionService prueba2=prueba.getTransaccionServicePort();
+        String resultado=prueba2.realizarTransaccion("1024683579102468","888","2021-12-31","1234567890123456","10","2018-12-04","1");
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -40,7 +49,7 @@ public class pago extends HttpServlet {
             out.println("<title>Servlet pago</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet pago at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet pago at " + resultado + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
