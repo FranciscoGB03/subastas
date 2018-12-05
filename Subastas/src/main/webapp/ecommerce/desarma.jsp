@@ -70,7 +70,7 @@
     </tr>  
     <tr>
         <td></td>
-     <td><form action="desarma.jsp"><button type="submit" class="btn btn-success" style="margin-top:15px;margin-left:100px;padding-right: 30px ">Pujar</button></form></td>                   
+     <td><form action="venta.jsp"><button type="submit" class="btn btn-success" style="margin-top:15px;margin-left:100px;padding-right: 30px ">Pujar</button></form></td>                   
      
     </tr> 
   </tbody>
@@ -79,6 +79,32 @@
         </div>
         <!--columna de la derecha-->
         <div class="col-xs-3 col-md-3 derecha">
+             <div class="jumbotron">
+                 <center><h4>Participantes</h4></center>
+                    <table class="table table-bordered" style="margin-top:40px; ">
+                   <thead>
+    <tr >
+        <th scope="col"><center>Usuario</center></th>
+      <th scope="col"><center>Monto</center></th>
+       
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Fabiola Lara</th>
+      <td>$200.00</td>     
+    </tr>
+    <tr>
+      <th scope="row">Sebastián Romero</th>
+      <td>$150.00</td>     
+    </tr> 
+    <tr>
+      <th scope="row">Roberto Vázquez</th>
+      <td>$90.00</td>     
+    </tr> 
+  </tbody>
+     </table>
+                </div>
         </div>
     </div>
 </div>
