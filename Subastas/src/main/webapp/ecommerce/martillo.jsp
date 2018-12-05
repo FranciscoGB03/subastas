@@ -70,7 +70,7 @@
     </tr>  
     <tr>
         <td></td>
-     <td><form action="desarma.jsp"><button type="submit" class="btn btn-success" style="margin-top:15px;margin-left:100px;padding-right: 30px ">Pujar</button></form></td>                   
+     <td><form action="venta.jsp"><button type="submit" class="btn btn-success" style="margin-top:15px;margin-left:100px;padding-right: 30px ">Pujar</button></form></td>                   
      
     </tr> 
   </tbody>
