@@ -34,7 +34,7 @@
                         <a href="producto.jsp" class="nav-link text-white">Productos&nbsp;en&nbsp;subasta</a>
                     </li>  
                     <li class="nav-item">
-                        <a href="venta.jsp" class="nav-link text-white">Acerca&nbsp;de</a>
+                        <a href="acercade.jsp" class="nav-link text-white">Acerca&nbsp;de</a>
                     </li> 
                 </ul>   
                <form class="form-inline my-2 my-lg-0" action="../index.jsp">                
